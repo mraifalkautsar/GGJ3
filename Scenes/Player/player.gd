@@ -48,19 +48,27 @@ extends CharacterBody2D
 @export var max_trojectory_ponints := 100
 
 
+var gravity_direction = 1
+
 @onready var jump_velocity : float = (2.0 * jump_height) / jump_time_to_peak * -1
 @onready var jump_gravity : float = (-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak) * -1
 @onready var fall_gravity : float = (-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent) * -1
 
 
 func _ready():
+	add_to_group("Player")
 	coyote_timer.wait_time = coyote_timer_value
 	jump_buffer_timer.wait_time = jump_buffer_timer_value
 
 
+func die():
+	get_tree().reload_current_scene()
+
+
+
 # Sets the gravity depending on the context
 func _get_gravity(_velocity):
-	return jump_gravity if _velocity.y < 0.0 else fall_gravity
+	return jump_gravity if _velocity.y * gravity_direction < 0.0 else fall_gravity
 
 
 # Calculates the players movement depending on the context
@@ -69,15 +77,15 @@ func _get_movement(fric: float, accel: float, delta: float):
 
 	if direction:
 		velocity.x += sign(direction) * accel * delta * 100
-	
+
 	if !direction or sign(direction) != sign(velocity.x):
 		velocity.x = move_toward(velocity.x, 0, fric * delta * 100)
-	
+
 	if is_variable_max_speed:
 		velocity.x = clamp(velocity.x, -max_speed * abs(direction), max_speed * abs(direction))
 	else:
 		velocity.x = clamp(velocity.x, -max_speed, max_speed)
-	
+
 	if is_variable_min_speed and min_speed > 0:
 			velocity.x = maxf(abs(velocity.x), abs(min_speed * sign(direction))) * sign(direction)
 
@@ -85,13 +93,13 @@ func _get_movement(fric: float, accel: float, delta: float):
 # A way to visialize the players jump trojectory in real time (WiP)
 func _projected_jump_trojectory(_delta, direction):
 	var max_points = max_trojectory_ponints
-	
+
 	jump_trojectory_line.clear_points()
 	var pos := Vector2.ZERO
-	var vel := Vector2(max_speed * direction, jump_velocity)
+	var vel := Vector2(max_speed * direction, jump_velocity * gravity_direction)
 	for point in max_points:
 		jump_trojectory_line.add_point(pos)
-		vel.y += _get_gravity(vel) * _delta
+		vel.y += _get_gravity(vel) * _delta * gravity_direction
 		pos += vel * _delta
 
 
@@ -105,8 +113,9 @@ func _set_sprite_direction(direction: int) -> void:
 
 
 func _physics_process(delta):
-	if not is_on_floor():
-		velocity.y += _get_gravity(velocity) * delta
+	var on_ground = is_on_floor() if gravity_direction == 1 else is_on_ceiling()
+	if not on_ground:
+		velocity.y += _get_gravity(velocity) * delta * gravity_direction
 		_get_movement(air_resistance, air_acceleration, delta)
 	else:
 		if coyote_timer.is_stopped():
@@ -115,33 +124,33 @@ func _physics_process(delta):
 			jump_buffer_timer.stop()
 			jump()
 		_get_movement(friction, acceleration, delta)
-	
+
 	_set_sprite_direction(sign(velocity.x))
-	
+
 	if Input.is_action_just_pressed("Jump"):
 		jump()
-	
+
 	if Input.is_action_just_released("Jump"):
 		jump_cut()
-	
+
 	if velocity != Vector2.ZERO:
 		$AnimatedSprite2D.play("walk")
 	else:
 		$AnimatedSprite2D.play("idle")
-		
+
 #	if Input.is_action_just_pressed("Preview_Jump"):
 #		_projected_jump_trojectory(delta, sign(velocity.x))
-	
+
 	move_and_slide()
-
-
 # Adds the player's jump velocity if able
 func jump():
 	if coyote_timer.time_left > 0.0:
 		coyote_timer.stop()
-		velocity.y = jump_velocity
-	
-	if _get_gravity(velocity) == fall_gravity:
+		velocity.y = jump_velocity * gravity_direction
+		gravity_direction *= -1
+		rotation = PI if gravity_direction == -1 else 0
+
+	if _get_gravity(velocity) * gravity_direction == fall_gravity:
 		jump_buffer_timer.start()
 
 
@@ -149,6 +158,6 @@ func jump():
 func jump_cut():
 	if not variable_jump_height:
 		return
-	
-	if velocity.y < minimum_jump_height * up_direction.y:
-		velocity.y = minimum_jump_height * up_direction.y
+
+	if velocity.y * gravity_direction < minimum_jump_height * up_direction.y:
+		velocity.y = minimum_jump_height * up_direction.y * gravity_direction
