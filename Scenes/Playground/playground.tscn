@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://budte4ik1rge5"]
+
+[ext_resource type="Texture2D" uid="uid://moyppe4bras4" path="res://icon.svg" id="1_hotcy"]
+[ext_resource type="PackedScene" uid="uid://c6spye233g43g" path="res://Scenes/Babeh/player.tscn" id="2_dbwwm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvwl6"]
+size = Vector2(482, 129)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hotcy"]
+
+[node name="Playground" type="Node2D" unique_id=2105118215]
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=2063810707]
+position = Vector2(63, 260)
+collision_layer = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor" unique_id=451314366]
+position = Vector2(177.5, 0)
+scale = Vector2(3.7734375, 1)
+texture = ExtResource("1_hotcy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1371731659]
+position = Vector2(177, 0.5)
+shape = SubResource("RectangleShape2D_uvwl6")
+
+[node name="Floor2" type="StaticBody2D" parent="." unique_id=2054207294]
+position = Vector2(184, 204)
+collision_layer = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor2" unique_id=285665019]
+position = Vector2(177.5, 0)
+scale = Vector2(3.7734375, 1)
+texture = ExtResource("1_hotcy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2" unique_id=1668961781]
+position = Vector2(177, 0.5)
+shape = SubResource("RectangleShape2D_uvwl6")
+
+[node name="Player" parent="." unique_id=1955628673 instance=ExtResource("2_dbwwm")]
+position = Vector2(10, 180)
+pull_power = 500.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1063339367]
+position = Vector2(222, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=724120726]
+shape = SubResource("RectangleShape2D_hotcy")
