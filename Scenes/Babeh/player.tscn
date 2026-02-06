@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c6spye233g43g"]
+
+[ext_resource type="Script" uid="uid://cx2fkpfjmnxyu" path="res://Scenes/Babeh/player.gd" id="1_m6ksk"]
+[ext_resource type="Script" uid="uid://c2pynypr7r7r1" path="res://Scenes/Babeh/rod_mechanic.gd" id="2_wy7u5"]
+[ext_resource type="PackedScene" uid="uid://8kk60rsyd7de" path="res://Scenes/Babeh/hook.tscn" id="3_gcese"]
+[ext_resource type="PackedScene" uid="uid://cvjcujrvtrqmj" path="res://Scenes/Camera/camera_system.tscn" id="4_4bgwr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wy7u5"]
+
+[node name="Player" type="CharacterBody2D" unique_id=1955628673]
+script = ExtResource("1_m6ksk")
+pull_power = 100.0
+
+[node name="RodMechanic" type="Node2D" parent="." unique_id=1866260536]
+script = ExtResource("2_wy7u5")
+hook_scene = ExtResource("3_gcese")
+max_charge = 800.0
+charge_rate = 800.0
+
+[node name="LineVisual" type="Line2D" parent="RodMechanic" unique_id=474168654]
+width = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1961694163]
+shape = SubResource("CapsuleShape2D_wy7u5")
+
+[node name="CameraSystem" parent="." unique_id=1625613650 instance=ExtResource("4_4bgwr")]
