@@ -1,69 +1,113 @@
 [gd_scene format=3 uid="uid://8r08chl8ges4"]
 
 [ext_resource type="Texture2D" uid="uid://d3bpr1kbywtly" path="res://Assets/Pasar/Bg without truck.PNG" id="1_deqog"]
+[ext_resource type="Texture2D" uid="uid://wof8w0dbo5kl" path="res://Assets/Preview.png" id="1_yvj08"]
+[ext_resource type="Texture2D" uid="uid://bemm6buctfw06" path="res://Assets/Pasar/Bg with truck no sampah.PNG" id="2_jap35"]
 [ext_resource type="Texture2D" uid="uid://1c8hmhxp064r" path="res://Assets/Pasar/Tanah.PNG" id="2_kvw4q"]
 [ext_resource type="Texture2D" uid="uid://dpou3xpx604bm" path="res://Assets/Pasar/Tanah with sampah.PNG" id="3_yvj08"]
 [ext_resource type="Texture2D" uid="uid://6opvpgq2sujx" path="res://Assets/Pasar/Front tiang.PNG" id="4_jap35"]
-[ext_resource type="Texture2D" uid="uid://kgrjkcv0nav5" path="res://Assets/Pasar/Bg with sampah.PNG" id="5_kvw4q"]
+[ext_resource type="PackedScene" uid="uid://bl4f8tj2ia0d7" path="res://Scenes/Babeh/player.tscn" id="7_jap35"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrdnt"]
-size = Vector2(567, 1121.75)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e1mly"]
+load_path = "res://.godot/imported/Bg with sampah.PNG-8d7aaddc890116b9666cf8c28942c261.ctex"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrinw"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kvw4q"]
+size = Vector2(567, 334.875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ox8k"]
+size = Vector2(567, 616.03674)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvj08"]
+size = Vector2(1419.6111, 66.204895)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jap35"]
+size = Vector2(146.5, 1079.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e1mly"]
+size = Vector2(110.5, 1071)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s22vf"]
+size = Vector2(498, 282.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7exki"]
 size = Vector2(498, 282.5)
 
 [sub_resource type="Animation" id="Animation_yvj08"]
-length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("World/TextureRect4:texture")
+tracks/0/path = NodePath("World/Tanah1:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_kvw4q")]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("World/TextureRect:texture")
+tracks/1/path = NodePath("World/Atas1:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_deqog")]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("World/Atas2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_jap35"]
 resource_name = "Truk Buang Sampah"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("World/TextureRect4:texture")
+tracks/0/path = NodePath("World/Tanah1:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(1, 2),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("2_kvw4q"), ExtResource("3_yvj08")]
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("World/TextureRect:texture")
+tracks/1/path = NodePath("World/Atas1:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("1_deqog"), ExtResource("5_kvw4q")]
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("World/Atas2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.0333333, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e1mly"]
@@ -74,57 +118,41 @@ _data = {
 
 [node name="Level1" type="Node2D" unique_id=1963387392]
 
-[node name="Tanah" type="StaticBody2D" parent="." unique_id=2092404085]
-position = Vector2(347, 739)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Tanah" unique_id=271581617]
-position = Vector2(274, 179)
-shape = SubResource("RectangleShape2D_xrdnt")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Tanah" unique_id=1960415494]
-position = Vector2(1166, 293)
-scale = Vector2(0.36, 0.52519804)
-shape = SubResource("RectangleShape2D_xrdnt")
-
-[node name="Tiang" type="StaticBody2D" parent="." unique_id=2106708865]
-position = Vector2(-202, -17)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiang" unique_id=1765339370]
-position = Vector2(274, 571.125)
-shape = SubResource("RectangleShape2D_xrdnt")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Tiang" unique_id=451596663]
-position = Vector2(2121, 578)
-shape = SubResource("RectangleShape2D_xrdnt")
-
-[node name="Sampah" type="Area2D" parent="." unique_id=1974542647]
-position = Vector2(910, 779)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sampah" unique_id=172123352]
-position = Vector2(249, 163.75)
-shape = SubResource("RectangleShape2D_wrinw")
-
-[node name="Exit" type="Area2D" parent="." unique_id=8793994]
-position = Vector2(1440, 390.00003)
-scale = Vector2(0.3227664, 1.050551)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=1042795467]
-position = Vector2(249, 163.75)
-shape = SubResource("RectangleShape2D_wrinw")
-
 [node name="World" type="CanvasLayer" parent="." unique_id=1340250255]
+layer = -1
 
-[node name="TextureRect" type="TextureRect" parent="World" unique_id=504837708]
+[node name="BG" type="TextureRect" parent="World" unique_id=1476957230]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 5.0
+offset_bottom = 345.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_yvj08")
+expand_mode = 1
+
+[node name="Atas3" type="TextureRect" parent="World" unique_id=917082719]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_jap35")
+
+[node name="Atas2" type="TextureRect" parent="World" unique_id=389443073]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("CompressedTexture2D_e1mly")
+
+[node name="Atas1" type="TextureRect" parent="World" unique_id=504837708]
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("1_deqog")
 
-[node name="TextureRect3" type="TextureRect" parent="World" unique_id=1165142767]
+[node name="Tanah2" type="TextureRect" parent="World" unique_id=164901102]
 offset_right = 1920.0
 offset_bottom = 1080.0
-texture = ExtResource("2_kvw4q")
+texture = ExtResource("3_yvj08")
 
-[node name="TextureRect4" type="TextureRect" parent="World" unique_id=164901102]
+[node name="Tanah1" type="TextureRect" parent="World" unique_id=1165142767]
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("2_kvw4q")
@@ -134,5 +162,62 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("4_jap35")
 
+[node name="Tanah" type="StaticBody2D" parent="." unique_id=2092404085]
+position = Vector2(347, 739)
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tanah" unique_id=271581617]
+position = Vector2(268, 173.5625)
+shape = SubResource("RectangleShape2D_kvw4q")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Tanah" unique_id=1960415494]
+position = Vector2(1166, 171.22937)
+scale = Vector2(0.36, 0.52519804)
+shape = SubResource("RectangleShape2D_2ox8k")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Tanah" unique_id=1888863886]
+position = Vector2(803.47, 328.61475)
+scale = Vector2(0.36, 0.52519804)
+shape = SubResource("RectangleShape2D_yvj08")
+
+[node name="Tiang" type="StaticBody2D" parent="." unique_id=2106708865]
+position = Vector2(-202, -17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiang" unique_id=1765339370]
+position = Vector2(484.25, 550.125)
+shape = SubResource("RectangleShape2D_jap35")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Tiang" unique_id=451596663]
+position = Vector2(1892.75, 557.5)
+shape = SubResource("RectangleShape2D_e1mly")
+
+[node name="Sampah" type="Area2D" parent="." unique_id=1974542647]
+position = Vector2(910, 779)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sampah" unique_id=172123352]
+position = Vector2(249, 163.75)
+shape = SubResource("RectangleShape2D_s22vf")
+
+[node name="Exit" type="Area2D" parent="." unique_id=8793994]
+position = Vector2(1440, 390.00003)
+scale = Vector2(0.3227664, 1.050551)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=1042795467]
+position = Vector2(263.34814, 181.80931)
+shape = SubResource("RectangleShape2D_7exki")
+
+[node name="Player" parent="." unique_id=1955628673 instance=ExtResource("7_jap35")]
+position = Vector2(453, 645)
+scale = Vector2(0.155, 0.155)
+
+[node name="CameraSystem" parent="Player" index="1" unique_id=1625613650 node_paths=PackedStringArray("fixed_target")]
+current_mode = 1
+fixed_target = NodePath("../../Marker2D")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1538948635]
 libraries/ = SubResource("AnimationLibrary_e1mly")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1567029410]
+position = Vector2(960, 540)
+
+[editable path="Player"]
