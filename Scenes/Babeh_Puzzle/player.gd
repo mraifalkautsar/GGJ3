@@ -3,6 +3,11 @@ extends CharacterBody2D
 @onready var rod = $AnimatedSprite2D/TeleportMechanic
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
+# --- AUDIO ---
+@onready var teleport_sound = $Teleport
+@onready var running_sound = $Running
+@onready var death_sound = $Death
+
 # --- PHYSICS ---
 @export var gravity: float = 980.0
 @export var friction: float = 800.0
@@ -18,8 +23,12 @@ func _physics_process(delta):
 	var dir = Input.get_axis("Move_Left", "Move_Right")
 	if dir:
 		velocity.x = move_toward(velocity.x, dir * walk_speed, 1000 * delta)
+		if is_on_floor() and not running_sound.playing:
+			running_sound.play()
 	else:
 		velocity.x = move_toward(velocity.x, 0, friction * delta)
+		if running_sound.playing:
+			running_sound.stop()
 	move_and_slide()
 	
 	update_animations(dir)
@@ -52,6 +61,7 @@ func update_animations(input_dir: float):
 func _on_teleport_requested(target_point: Vector2):
 	global_position = target_point
 	velocity = Vector2.ZERO
+	teleport_sound.play()
 
 func swap_position_with(object_to_swap: RigidBody2D):
 	object_to_swap.linear_velocity = Vector2.ZERO
@@ -71,3 +81,10 @@ func swap_position_with(object_to_swap: RigidBody2D):
 		PhysicsServer2D.BODY_STATE_TRANSFORM,
 		transform
 	)
+
+	teleport_sound.play()
+
+func die():
+	death_sound.play()
+	await get_tree().create_timer(1.0).timeout
+	get_tree().reload_current_scene()
