@@ -381,13 +381,13 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wy7u5"]
-height = 38.0
+radius = 228.0
+height = 800.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1955628673]
 script = ExtResource("1_m6ksk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=540436425]
-scale = Vector2(0.04, 0.04)
 sprite_frames = SubResource("SpriteFrames_m2s5m")
 animation = &"reel"
 autoplay = "default"
@@ -403,8 +403,8 @@ charge_rate = 800.0
 position = Vector2(-17, 6)
 width = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1961694163]
-position = Vector2(0, 1)
-shape = SubResource("CapsuleShape2D_wy7u5")
-
 [node name="CameraSystem" parent="." unique_id=1625613650 instance=ExtResource("4_4bgwr")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1961694163]
+position = Vector2(1, 91)
+shape = SubResource("CapsuleShape2D_wy7u5")

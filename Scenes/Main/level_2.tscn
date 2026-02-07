@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://d2noufo7l0dip"]
+
+[ext_resource type="PackedScene" uid="uid://c6spye233g43g" path="res://Scenes/Babeh_Puzzle/player.tscn" id="1_dl3r5"]
+[ext_resource type="Texture2D" uid="uid://b26iw136fw470" path="res://Assets/level2/IMG_3228.PNG" id="2_01s2i"]
+[ext_resource type="Texture2D" uid="uid://cb8g2nojuw5ca" path="res://Assets/level2/IMG_3229.PNG" id="3_u2n74"]
+[ext_resource type="Texture2D" uid="uid://bbcc3nivc7ma8" path="res://Assets/level2/IMG_3230.PNG" id="4_81gd1"]
+[ext_resource type="Texture2D" uid="uid://v0urv70svlwv" path="res://Assets/level2/IMG_3231.PNG" id="5_k7gxp"]
+[ext_resource type="Texture2D" uid="uid://bgubifikouks" path="res://Assets/level2/kucing.png" id="6_1bw1f"]
+[ext_resource type="Texture2D" uid="uid://cjro2g42squg3" path="res://Assets/level2/IMG_3232.PNG" id="6_u2n74"]
+[ext_resource type="Texture2D" uid="uid://d3gcmigmb3yp6" path="res://Assets/level2/IMG_3234.PNG" id="7_u2n74"]
+[ext_resource type="Texture2D" uid="uid://jsveh5nli42t" path="res://Assets/level2/IMG_3235.PNG" id="8_81gd1"]
+[ext_resource type="Texture2D" uid="uid://72swr0q83egv" path="res://Assets/level2/IMG_3233.PNG" id="8_k7gxp"]
+[ext_resource type="Texture2D" uid="uid://bqcyoeibek13q" path="res://Assets/level2/IMG_3236.PNG" id="10_k7gxp"]
+[ext_resource type="Texture2D" uid="uid://b1x8swfq6p4qj" path="res://Assets/level2/IMG_3237.PNG" id="12_k7gxp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v4rsu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_u2n74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_81gd1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_k7gxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_k7gxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_k7gxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_u2n74")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k7gxp"]
+size = Vector2(1140.5, 530)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4rsu"]
+size = Vector2(338, 513)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7inj5"]
+size = Vector2(833, 253.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q37cu"]
+size = Vector2(142.25, 1300.75)
+
+[node name="Level2" type="Node2D" unique_id=4385575]
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=614703911]
+position = Vector2(960, 540)
+
+[node name="World" type="CanvasLayer" parent="." unique_id=476035845]
+layer = -1
+
+[node name="Bg" type="Sprite2D" parent="World" unique_id=613233119]
+position = Vector2(959.73987, 542.75)
+scale = Vector2(0.99922913, 0.8265385)
+texture = ExtResource("2_01s2i")
+
+[node name="Hotel" type="AnimatedSprite2D" parent="World" unique_id=1634238215]
+position = Vector2(959.73987, 540.75)
+scale = Vector2(0.99922913, 0.8265385)
+sprite_frames = SubResource("SpriteFrames_v4rsu")
+frame = 1
+frame_progress = 0.9042959
+
+[node name="Tanah" type="Sprite2D" parent="World" unique_id=679070497]
+position = Vector2(959.00006, 542)
+scale = Vector2(0.99922913, 0.8265385)
+texture = ExtResource("7_u2n74")
+
+[node name="Pecel" type="Sprite2D" parent="World" unique_id=1116332762]
+position = Vector2(959.00006, 542)
+scale = Vector2(0.99922913, 0.8265385)
+texture = ExtResource("8_k7gxp")
+
+[node name="TiangListrik" type="Sprite2D" parent="World" unique_id=1295214023]
+position = Vector2(1631.9998, 542)
+scale = Vector2(0.99922913, 0.8265385)
+texture = ExtResource("8_81gd1")
+
+[node name="Kucing" type="Sprite2D" parent="World" unique_id=1900790555]
+position = Vector2(1217, 791)
+scale = Vector2(0.7, 0.579)
+texture = ExtResource("6_1bw1f")
+
+[node name="PolisiTidur" type="Sprite2D" parent="World" unique_id=826388559]
+position = Vector2(958, 485)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("10_k7gxp")
+
+[node name="PolisiTidur2" type="Sprite2D" parent="World" unique_id=2105364940]
+position = Vector2(961, 655)
+texture = ExtResource("12_k7gxp")
+
+[node name="Player" parent="." unique_id=1955628673 instance=ExtResource("1_dl3r5")]
+position = Vector2(87.00012, 451.00006)
+scale = Vector2(0.2, 0.2)
+
+[node name="CameraSystem" parent="Player" index="1" unique_id=1625613650 node_paths=PackedStringArray("fixed_target")]
+current_mode = 1
+fixed_target = NodePath("../../Marker2D")
+
+[node name="WorldCollisions" type="Node2D" parent="." unique_id=1588624679]
+
+[node name="Tanah" type="StaticBody2D" parent="WorldCollisions" unique_id=423780243 groups=["walls"]]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldCollisions/Tanah" unique_id=1226811586 groups=["walls"]]
+position = Vector2(568.75, 815)
+shape = SubResource("RectangleShape2D_k7gxp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldCollisions/Tanah" unique_id=909375505 groups=["walls"]]
+position = Vector2(1129, 1071.5)
+shape = SubResource("RectangleShape2D_v4rsu")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldCollisions/Tanah" unique_id=2031679082 groups=["walls"]]
+position = Vector2(1504.5, 1207)
+shape = SubResource("RectangleShape2D_7inj5")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="WorldCollisions/Tanah" unique_id=1050494940]
+position = Vector2(1994.875, 650.625)
+shape = SubResource("RectangleShape2D_q37cu")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="WorldCollisions/Tanah" unique_id=272024405]
+position = Vector2(-73, 654)
+shape = SubResource("RectangleShape2D_q37cu")
+
+[editable path="Player"]
