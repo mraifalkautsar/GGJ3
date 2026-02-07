@@ -16,7 +16,7 @@ func _integrate_forces(state):
 	if state.get_contact_count() > 0:
 		var collider = state.get_contact_collider_object(0)
 		
-		if collider.is_in_group("walls") or collider is TileMap:
+		if collider.is_in_group("walls") or collider is TileMap or (collider is Area2D and collider.is_in_group("walls")):
 			set_deferred("freeze", true)
 			hook_landed.emit(global_position)
 			
