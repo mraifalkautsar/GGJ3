@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://s3wf3xpub3bq"]
+[gd_scene format=3 uid="uid://7s0oinabhuxw"]
 
 [ext_resource type="Texture2D" uid="uid://moyppe4bras4" path="res://icon.svg" id="1_ba4un"]
 [ext_resource type="PackedScene" uid="uid://c6spye233g43g" path="res://Scenes/Babeh_Puzzle/player.tscn" id="2_31rp5"]

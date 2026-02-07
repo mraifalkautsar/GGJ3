@@ -2,13 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://moyppe4bras4" path="res://icon.svg" id="1_hotcy"]
 [ext_resource type="PackedScene" uid="uid://ctf7lbdwu8mbd" path="res://Scenes/Playground/Blocking.tscn" id="1_uvwl6"]
-[ext_resource type="PackedScene" uid="uid://c6spye233g43g" path="res://Scenes/Babeh/player.tscn" id="2_dbwwm"]
+[ext_resource type="PackedScene" uid="uid://bl4f8tj2ia0d7" path="res://Scenes/Babeh/player.tscn" id="2_dbwwm"]
 [ext_resource type="PackedScene" uid="uid://bjqugrtemrfbx" path="res://Scenes/Playground/FloorBlock.tscn" id="4_kh02m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dbwwm"]
 size = Vector2(123, 122)
 
 [node name="Playground" type="Node2D" unique_id=2105118215]
+scale = Vector2(3, 3)
 
 [node name="Floor" parent="." unique_id=817428041 instance=ExtResource("1_uvwl6")]
 position = Vector2(-348, 265.00003)
@@ -16,6 +17,7 @@ scale = Vector2(1.5199988, 0.76000243)
 
 [node name="Player" parent="." unique_id=1955628673 instance=ExtResource("2_dbwwm")]
 position = Vector2(-369, 117)
+max_pull_power = 600.0
 max_lift_power = 900.0
 
 [node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=459226380]

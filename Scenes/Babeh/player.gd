@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
-@onready var rod_mechanic: RodMechanic = $RodMechanic
+@onready var rod_mechanic: RodMechanic = $AnimatedSprite2D/RodMechanic
 @onready var camera_system: Camera2D = $CameraSystem
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
 
 # --- PHYSICS ---
 @export var gravity: float = 980.0
@@ -16,15 +18,46 @@ func _ready():
 	rod_mechanic.launch_requested.connect(_on_rod_launch)
 
 func _physics_process(delta):
-	# ... (Keep gravity and walking logic exactly the same) ...
 	velocity.y += gravity * delta
-	var dir = Input.get_axis("ui_left", "ui_right")
+	var dir = Input.get_axis("Move_Left", "Move_Right")
 	if dir:
 		velocity.x = move_toward(velocity.x, dir * walk_speed, 1000 * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0, friction * delta)
 	move_and_slide()
 	camera_system.is_aiming = (rod_mechanic.current_state == rod_mechanic.State.CHARGING)
+	update_animations(dir)
+
+# --- ANIMATION LOGIC ---
+func update_animations(input_dir: float):
+	var mouse_pos = get_global_mouse_position()
+	animated_sprite_2d.flip_h = (mouse_pos.x >= global_position.x)
+	if rod_mechanic.current_state == rod_mechanic.State.CHARGING:
+		if animated_sprite_2d.animation != "reel":
+			animated_sprite_2d.play("reel")
+		return
+		
+	if rod_mechanic.current_state == rod_mechanic.State.THROWN:
+		if animated_sprite_2d.animation != "throw":
+			animated_sprite_2d.play("throw")
+		return # STOP here
+	
+	# --- 3. AIR STATES ---
+	if not is_on_floor():
+		if velocity.y < 0:
+			#animated_sprite_2d.play("jump")
+			pass
+		else:
+			#animated_sprite_2d.play("fall")
+			pass
+		return
+
+	# --- 4. GROUND STATES ---
+	if input_dir != 0:
+		animated_sprite_2d.play("walk")
+	else:
+		animated_sprite_2d.play("default")
+
 
 # --- THE CORE BRAIN ---
 func _on_rod_launch(target_point: Vector2, charge_ratio: float, target_body: Node):

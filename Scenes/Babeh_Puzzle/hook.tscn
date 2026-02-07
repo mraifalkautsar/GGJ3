@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://8kk60rsyd7de"]
 
-[ext_resource type="Script" uid="uid://chfm7x7wjslq1" path="res://Scenes/Babeh_Puzzle/hook.gd" id="1_7jj18"]
+[ext_resource type="Script" uid="uid://dmbogow8fj7rd" path="res://Scenes/Babeh/hook.gd" id="1_mrqm6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k0ubs"]
 radius = 6.0
@@ -12,7 +12,7 @@ collision_mask = 2
 gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 1
-script = ExtResource("1_7jj18")
+script = ExtResource("1_mrqm6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1215327444]
 shape = SubResource("CircleShape2D_k0ubs")
