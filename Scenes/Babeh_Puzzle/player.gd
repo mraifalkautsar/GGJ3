@@ -1,8 +1,7 @@
 extends CharacterBody2D
 
-@onready var rod: TeleportMechanic = $TeleportMechanic
+@onready var rod = $TeleportMechanic
 
-# --- PHYSICS ---
 @export var gravity: float = 980.0
 @export var friction: float = 800.0
 @export var walk_speed: float = 200.0
@@ -10,17 +9,15 @@ extends CharacterBody2D
 
 func _ready():
 	add_to_group("Player")
+	# 1. Connect Teleport (Existing)
 	rod.teleport_requested.connect(_on_teleport_requested)
+	
+	# 2. Connect Swap (FIX ADDED HERE)
+	rod.player_swap_requested.connect(swap_position_with)
 
 func _physics_process(delta):
-	# 1. Gravity
 	velocity.y += gravity * delta
 
-	# 2. Jump
-	if Input.is_action_just_pressed("Jump") and is_on_floor():
-		velocity.y = -jump_force
-
-	# 3. Walk
 	var dir = Input.get_axis("Move_Left", "Move_Right")
 	if dir:
 		velocity.x = move_toward(velocity.x, dir * walk_speed, 1000 * delta)
@@ -34,11 +31,25 @@ func _on_teleport_requested(target_point: Vector2):
 	velocity = Vector2.ZERO
 
 func swap_position_with(object_to_swap: RigidBody2D):
-	print("Player received swap request for: ", object_to_swap.name)
-	var my_pos = global_transform
-	var other_pos = object_to_swap.global_transform
-	print("Swapping player at ", my_pos.origin, " with ", other_pos.origin)
-	global_transform = other_pos
-	object_to_swap.global_transform = my_pos
-	print("New player position: ", global_transform.origin)
-	print("New object position: ", object_to_swap.global_transform.origin)
+	# 1. Stop the object's previous momentum so it doesn't fly away after swap
+	object_to_swap.linear_velocity = Vector2.ZERO
+	object_to_swap.angular_velocity = 0
+	
+	# 2. Capture positions
+	var player_pos = global_position
+	var target_pos = object_to_swap.global_position
+	
+	# 3. Move Player
+	global_position = target_pos
+	velocity = Vector2.ZERO
+	
+	# 4. Move Object using the Physics Server (The "Golden Way")
+	# This prevents the "snapping back" glitch
+	var transform = object_to_swap.global_transform
+	transform.origin = player_pos + Vector2(0, -5)
+	
+	PhysicsServer2D.body_set_state(
+		object_to_swap.get_rid(),
+		PhysicsServer2D.BODY_STATE_TRANSFORM,
+		transform
+	)

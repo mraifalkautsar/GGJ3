@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c6spye233g43g"]
 
 [ext_resource type="Script" uid="uid://cx2fkpfjmnxyu" path="res://Scenes/Babeh_Puzzle/player.gd" id="1_m6ksk"]
-[ext_resource type="Script" uid="uid://dhyrrjf8rw7ig" path="res://Scenes/Babeh_Puzzle/teleport_mechanic.gd" id="2_wy7u5"]
-[ext_resource type="PackedScene" uid="uid://8kk60rsyd7de" path="res://Scenes/Babeh_Puzzle/hook.tscn" id="3_gcese"]
+[ext_resource type="Script" uid="uid://dhyrrjf8rw7ig" path="res://Scenes/Babeh_Puzzle/teleport_mechanic.gd" id="2_1vcqr"]
+[ext_resource type="PackedScene" uid="uid://8kk60rsyd7de" path="res://Scenes/Babeh_Puzzle/hook.tscn" id="3_r6fjk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wy7u5"]
 
@@ -11,8 +11,8 @@ collision_mask = 2
 script = ExtResource("1_m6ksk")
 
 [node name="TeleportMechanic" type="Node2D" parent="." unique_id=1866260536]
-script = ExtResource("2_wy7u5")
-hook_scene = ExtResource("3_gcese")
+script = ExtResource("2_1vcqr")
+hook_scene = ExtResource("3_r6fjk")
 
 [node name="LineVisual" type="Line2D" parent="TeleportMechanic" unique_id=474168654]
 width = 2.0
