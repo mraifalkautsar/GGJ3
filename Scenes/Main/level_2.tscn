@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://72swr0q83egv" path="res://Assets/level2/IMG_3233.PNG" id="8_k7gxp"]
 [ext_resource type="Texture2D" uid="uid://bqcyoeibek13q" path="res://Assets/level2/IMG_3236.PNG" id="10_k7gxp"]
 [ext_resource type="Texture2D" uid="uid://b1x8swfq6p4qj" path="res://Assets/level2/IMG_3237.PNG" id="12_k7gxp"]
+[ext_resource type="AudioStream" uid="uid://dvvfq1ave5v18" path="res://Assets/Sounds/Puzzle.mp3" id="13_v4rsu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v4rsu"]
 animations = [{
@@ -50,6 +51,14 @@ size = Vector2(833, 253.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q37cu"]
 size = Vector2(142.25, 1300.75)
+
+[sub_resource type="Curve" id="Curve_sleep"]
+_data = [Vector2(0, 0.3), 0.0, 0.0, 0, 0, Vector2(0.4, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_electric"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0.8), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="Level2" type="Node2D" unique_id=4385575]
 
@@ -133,5 +142,154 @@ shape = SubResource("RectangleShape2D_q37cu")
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="WorldCollisions/Tanah" unique_id=272024405]
 position = Vector2(-73, 654)
 shape = SubResource("RectangleShape2D_q37cu")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1533740845]
+stream = ExtResource("13_v4rsu")
+autoplay = true
+
+[node name="SleepParticles1" type="CPUParticles2D" parent="." unique_id=1234567894]
+position = Vector2(1014, 445)
+lifetime = 2.5
+preprocess = 1.0
+explosiveness = 0.2
+randomness = 0.3
+emission_shape = 1
+emission_sphere_radius = 20.0
+direction = Vector2(0, -1)
+spread = 15.0
+gravity = Vector2(0, -30)
+initial_velocity_min = 20.0
+initial_velocity_max = 35.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+scale_amount_min = 3.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_sleep")
+color = Color(0.9019608, 0.7058824, 1, 0.7019608)
+
+[node name="SleepParticles2" type="CPUParticles2D" parent="." unique_id=1234567895]
+position = Vector2(902, 453)
+amount = 10
+lifetime = 2.8
+preprocess = 1.2
+explosiveness = 0.15
+randomness = 0.35
+emission_shape = 1
+emission_sphere_radius = 25.0
+direction = Vector2(0, -1)
+spread = 18.0
+gravity = Vector2(0, -25)
+initial_velocity_min = 18.0
+initial_velocity_max = 32.0
+angular_velocity_min = -80.0
+angular_velocity_max = 80.0
+scale_amount_min = 2.5
+scale_amount_max = 4.5
+scale_amount_curve = SubResource("Curve_sleep")
+color = Color(0.8509804, 0.69803923, 1, 0.6509804)
+
+[node name="SleepParticles3" type="CPUParticles2D" parent="." unique_id=1234567896]
+position = Vector2(1187, 783)
+amount = 6
+lifetime = 2.2
+preprocess = 0.8
+explosiveness = 0.25
+randomness = 0.4
+emission_shape = 1
+emission_sphere_radius = 15.0
+direction = Vector2(0, -1)
+spread = 12.0
+gravity = Vector2(0, -35)
+initial_velocity_min = 15.0
+initial_velocity_max = 28.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 3.5
+scale_amount_curve = SubResource("Curve_sleep")
+color = Color(0.9490196, 0.60784316, 1, 0.6)
+
+[node name="ElectricParticles1" type="CPUParticles2D" parent="." unique_id=1234567897]
+position = Vector2(1689, 378)
+amount = 15
+lifetime = 0.4
+preprocess = 0.5
+explosiveness = 0.8
+randomness = 0.6
+emission_shape = 1
+emission_sphere_radius = 25.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 80.0
+initial_velocity_max = 150.0
+angular_velocity_min = -360.0
+angular_velocity_max = 360.0
+scale_amount_min = 2.5
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_electric")
+color = Color(0.8, 0.9, 1, 0.9)
+
+[node name="ElectricParticles2" type="CPUParticles2D" parent="." unique_id=1234567898]
+position = Vector2(1741, 184)
+amount = 12
+lifetime = 0.35
+preprocess = 0.6
+explosiveness = 0.85
+randomness = 0.7
+emission_shape = 1
+emission_sphere_radius = 20.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 90.0
+initial_velocity_max = 160.0
+angular_velocity_min = -400.0
+angular_velocity_max = 400.0
+scale_amount_max = 2.5
+scale_amount_curve = SubResource("Curve_electric")
+color = Color(1, 1, 0.7, 0.85)
+
+[node name="ElectricParticles3" type="CPUParticles2D" parent="." unique_id=1234567899]
+position = Vector2(1485, 38)
+amount = 10
+lifetime = 0.3
+preprocess = 0.4
+explosiveness = 0.9
+randomness = 0.75
+emission_shape = 1
+emission_sphere_radius = 15.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 70.0
+initial_velocity_max = 140.0
+angular_velocity_min = -450.0
+angular_velocity_max = 450.0
+scale_amount_min = 1.2
+scale_amount_max = 2.8
+scale_amount_curve = SubResource("Curve_electric")
+color = Color(0.6, 0.8, 1, 0.8)
+
+[node name="ElectricParticles4" type="CPUParticles2D" parent="." unique_id=807550785]
+position = Vector2(1173, 69)
+amount = 10
+lifetime = 0.3
+preprocess = 0.4
+explosiveness = 0.9
+randomness = 0.75
+emission_shape = 1
+emission_sphere_radius = 15.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 70.0
+initial_velocity_max = 140.0
+angular_velocity_min = -450.0
+angular_velocity_max = 450.0
+scale_amount_min = 1.2
+scale_amount_max = 2.8
+scale_amount_curve = SubResource("Curve_electric")
+color = Color(0.6, 0.8, 1, 0.8)
 
 [editable path="Player"]
