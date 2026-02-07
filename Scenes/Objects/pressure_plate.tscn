@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b1y2x3w4q5d6e"]
+
+[ext_resource type="Script" uid="uid://dqagsu02d45r7" path="res://Scenes/Objects/pressure_plate.gd" id="1_abcde"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_67890"]
+size = Vector2(32, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_12345"]
+size = Vector2(32, 8)
+
+[node name="PressurePlate" type="Area2D" unique_id=346469437]
+collision_layer = 4
+script = ExtResource("1_abcde")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=467861636]
+texture = SubResource("PlaceholderTexture2D_67890")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1036087028]
+shape = SubResource("RectangleShape2D_12345")

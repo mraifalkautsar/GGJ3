@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://budte4ik1rge5"]
 
 [ext_resource type="Texture2D" uid="uid://moyppe4bras4" path="res://icon.svg" id="1_hotcy"]
-[ext_resource type="PackedScene" uid="uid://c6spye233g43g" path="res://Scenes/Babeh/player.tscn" id="2_dbwwm"]
+[ext_resource type="PackedScene" uid="uid://c6spye233g43g" path="res://Scenes/Babeh_Puzzle/player.tscn" id="2_dbwwm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uvwl6"]
 size = Vector2(482, 129)
@@ -38,7 +38,6 @@ shape = SubResource("RectangleShape2D_uvwl6")
 
 [node name="Player" parent="." unique_id=1955628673 instance=ExtResource("2_dbwwm")]
 position = Vector2(10, 180)
-pull_power = 500.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1063339367]
 position = Vector2(222, 5)

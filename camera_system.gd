@@ -27,16 +27,6 @@ func _process(delta):
 	# 1. CALCULATE DESIRED OFFSET
 	var desired_offset = Vector2.ZERO
 	
-	if is_aiming:
-		# Mode A: Aiming (Shift towards mouse)
-		var mouse_local = get_local_mouse_position()
-		desired_offset = mouse_local * aim_bias
-	else:
-		# Mode B: Moving (Look ahead based on velocity)
-		if player.velocity.length() > 50:
-			# Normalize velocity and multiply by look_ahead
-			desired_offset = player.velocity.normalized() * look_ahead_dist
-	
 	# 2. SMOOTHLY MOVE CAMERA (LERP)
 	# We modify the 'offset' property of the Camera2D, not the position
 	offset = offset.lerp(desired_offset, lerp_speed * delta)

@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bux2p4f17dhtl"]
+
+[ext_resource type="Texture2D" uid="uid://moyppe4bras4" path="res://icon.svg" id="1_xyxou"]
+
+[sub_resource type="GDScript" id="GDScript_0mlkb"]
+script/source = "extends AnimatableBody2D
+
+@export var move_speed: float = 100.0
+var velocity: Vector2 = Vector2.ZERO
+
+func _physics_process(delta: float) -> void:
+	var direction = Input.get_axis(\"Move_Left\", \"Move_Right\")
+
+	if direction:
+		velocity.x = direction * move_speed
+	else:
+		velocity.x = 0
+
+	var collision = move_and_collide(velocity * delta)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1w1w1"]
+size = Vector2(128, 32)
+
+[node name="InputPlatform" type="AnimatableBody2D" unique_id=2018826925]
+script = SubResource("GDScript_0mlkb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1708514003]
+scale = Vector2(1, 0.25)
+texture = ExtResource("1_xyxou")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1619619125]
+shape = SubResource("RectangleShape2D_1w1w1")

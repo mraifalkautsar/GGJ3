@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dplvjqo4ycmc8"]
+
+[ext_resource type="Script" uid="uid://cqydm0dmqqnfl" path="res://Scenes/Objects/swappable_object.gd" id="1_abcde"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_67890"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_12345"]
+size = Vector2(32, 32)
+
+[node name="SwappableObject" type="RigidBody2D" unique_id=1681004946]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_abcde")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=222717126]
+texture = SubResource("PlaceholderTexture2D_67890")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1526611361]
+shape = SubResource("RectangleShape2D_12345")

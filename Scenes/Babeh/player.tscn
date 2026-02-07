@@ -1,15 +1,14 @@
-[gd_scene format=3 uid="uid://c6spye233g43g"]
+[gd_scene format=3 uid="uid://bl4f8tj2ia0d7"]
 
-[ext_resource type="Script" uid="uid://cx2fkpfjmnxyu" path="res://Scenes/Babeh/player.gd" id="1_m6ksk"]
-[ext_resource type="Script" uid="uid://c2pynypr7r7r1" path="res://Scenes/Babeh/rod_mechanic.gd" id="2_wy7u5"]
-[ext_resource type="PackedScene" uid="uid://8kk60rsyd7de" path="res://Scenes/Babeh/hook.tscn" id="3_gcese"]
+[ext_resource type="Script" path="res://Scenes/Babeh/player.gd" id="1_m6ksk"]
+[ext_resource type="Script" path="res://Scenes/Babeh/rod_mechanic.gd" id="2_wy7u5"]
+[ext_resource type="PackedScene" uid="uid://8kk60rsyd7de" path="res://Scenes/Babeh_Puzzle/hook.tscn" id="3_gcese"]
 [ext_resource type="PackedScene" uid="uid://cvjcujrvtrqmj" path="res://Scenes/Camera/camera_system.tscn" id="4_4bgwr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wy7u5"]
 
 [node name="Player" type="CharacterBody2D" unique_id=1955628673]
 script = ExtResource("1_m6ksk")
-pull_power = 100.0
 
 [node name="RodMechanic" type="Node2D" parent="." unique_id=1866260536]
 script = ExtResource("2_wy7u5")
