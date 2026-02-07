@@ -289,6 +289,10 @@ frame_progress = 0.8353662
 position = Vector2(623, 1908)
 texture = ExtResource("32_sib4t")
 
+[node name="Resepsionis" type="Sprite2D" parent="World" unique_id=620971385]
+position = Vector2(342, 1876)
+texture = ExtResource("33_nfgag")
+
 [node name="Meja" type="Sprite2D" parent="World" unique_id=542193931]
 position = Vector2(386, 2009)
 texture = ExtResource("34_rqug6")
@@ -390,10 +394,6 @@ texture = ExtResource("31_eruti")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pipes/AnimatableBody2D3" unique_id=1094003130]
 position = Vector2(-674, -290.5)
 shape = SubResource("RectangleShape2D_66alx")
-
-[node name="Resepsionis" type="Sprite2D" parent="." unique_id=620971385]
-position = Vector2(370, 1784)
-texture = ExtResource("33_nfgag")
 
 [node name="Player" parent="." unique_id=1955628673 instance=ExtResource("61_87s1p")]
 position = Vector2(333, 618)

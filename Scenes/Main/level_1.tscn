@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://8r08chl8ges4"]
 
 [ext_resource type="Texture2D" uid="uid://d3bpr1kbywtly" path="res://Assets/Pasar/Bg without truck.PNG" id="1_deqog"]
-[ext_resource type="Texture2D" uid="uid://wof8w0dbo5kl" path="res://Assets/Preview.png" id="1_yvj08"]
+[ext_resource type="Texture2D" uid="uid://da5i61nx6nahr" path="res://Assets/level0/IMG_3215.PNG" id="1_jap35"]
 [ext_resource type="Texture2D" uid="uid://bemm6buctfw06" path="res://Assets/Pasar/Bg with truck no sampah.PNG" id="2_jap35"]
 [ext_resource type="Texture2D" uid="uid://1c8hmhxp064r" path="res://Assets/Pasar/Tanah.PNG" id="2_kvw4q"]
 [ext_resource type="Texture2D" uid="uid://dpou3xpx604bm" path="res://Assets/Pasar/Tanah with sampah.PNG" id="3_yvj08"]
@@ -116,21 +116,41 @@ _data = {
 &"Truk Buang Sampah": SubResource("Animation_jap35")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s731f"]
+size = Vector2(304, 264)
+
 [node name="Level1" type="Node2D" unique_id=1963387392]
 
 [node name="World" type="CanvasLayer" parent="." unique_id=1340250255]
 layer = -1
 
-[node name="BG" type="TextureRect" parent="World" unique_id=1476957230]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 5.0
-offset_bottom = 345.0
+[node name="Img3215" type="TextureRect" parent="World" unique_id=2114185297]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2665.0
+offset_top = -540.0
+offset_right = -745.0
+offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_yvj08")
-expand_mode = 1
+texture = ExtResource("1_jap35")
+
+[node name="Img3216" type="TextureRect" parent="World" unique_id=1936613682]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 126.0
+offset_top = -540.0
+offset_right = 2046.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_jap35")
 
 [node name="Atas3" type="TextureRect" parent="World" unique_id=917082719]
 offset_right = 1920.0
@@ -158,7 +178,8 @@ offset_bottom = 1080.0
 texture = ExtResource("2_kvw4q")
 
 [node name="TextureRect2" type="TextureRect" parent="World" unique_id=137396505]
-offset_right = 1920.0
+offset_left = 3.0
+offset_right = 1923.0
 offset_bottom = 1080.0
 texture = ExtResource("4_jap35")
 
@@ -182,13 +203,14 @@ shape = SubResource("RectangleShape2D_yvj08")
 
 [node name="Tiang" type="StaticBody2D" parent="." unique_id=2106708865]
 position = Vector2(-202, -17)
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tiang" unique_id=1765339370]
 position = Vector2(484.25, 550.125)
 shape = SubResource("RectangleShape2D_jap35")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Tiang" unique_id=451596663]
-position = Vector2(1892.75, 557.5)
+position = Vector2(1877, 559)
 shape = SubResource("RectangleShape2D_e1mly")
 
 [node name="Sampah" type="Area2D" parent="." unique_id=1974542647]
@@ -203,7 +225,7 @@ position = Vector2(1440, 390.00003)
 scale = Vector2(0.3227664, 1.050551)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=1042795467]
-position = Vector2(263.34814, 181.80931)
+position = Vector2(266.44675, 185.61684)
 shape = SubResource("RectangleShape2D_7exki")
 
 [node name="Player" parent="." unique_id=1955628673 instance=ExtResource("7_jap35")]
@@ -213,11 +235,19 @@ scale = Vector2(0.155, 0.155)
 [node name="CameraSystem" parent="Player" index="1" unique_id=1625613650 node_paths=PackedStringArray("fixed_target")]
 current_mode = 1
 fixed_target = NodePath("../../Marker2D")
+decay_rate = 10.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1538948635]
 libraries/ = SubResource("AnimationLibrary_e1mly")
+autoplay = &"Truk Buang Sampah"
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1567029410]
 position = Vector2(960, 540)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1597513713]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1017718365]
+position = Vector2(1170, 610)
+shape = SubResource("RectangleShape2D_s731f")
 
 [editable path="Player"]

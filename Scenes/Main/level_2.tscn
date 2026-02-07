@@ -82,9 +82,10 @@ scale = Vector2(0.99922913, 0.8265385)
 texture = ExtResource("8_k7gxp")
 
 [node name="TiangListrik" type="Sprite2D" parent="World" unique_id=1295214023]
-position = Vector2(1631.9998, 542)
+position = Vector2(1899, 1072)
 scale = Vector2(0.99922913, 0.8265385)
 texture = ExtResource("8_81gd1")
+offset = Vector2(-267.20618, -641.2284)
 
 [node name="Kucing" type="Sprite2D" parent="World" unique_id=1900790555]
 position = Vector2(1217, 791)

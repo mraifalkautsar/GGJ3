@@ -17,79 +17,69 @@ func _ready() -> void:
 	if hidden_character:
 		hidden_character.modulate.a = 0
 	
-	# Connect mouse input
 	set_process_input(true)
 
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		var mouse_pos = get_global_mouse_position()
 		
-		# Check Start button
-		if not button_clicked["Start"] and is_point_in_button(mouse_pos, start_button):
-			button_clicked["Start"] = true
-			tumble_button(start_button, false)
+		# Process clicks for each button
+		check_button_click("Start", start_button, mouse_pos)
+		check_button_click("Options", options_button, mouse_pos)
+		check_button_click("Exit", exit_button, mouse_pos)
+
+func check_button_click(button_key: String, button_node: Node2D, mouse_pos: Vector2):
+	if not button_clicked[button_key] and is_point_in_button(mouse_pos, button_node):
+		button_clicked[button_key] = true
 		
-		# Check Options button
-		elif not button_clicked["Options"] and is_point_in_button(mouse_pos, options_button):
-			button_clicked["Options"] = true
-			tumble_button(options_button, false)
+		# Check if this was the last button needed
+		var is_all_done = are_all_buttons_clicked()
+		tumble_button(button_node, is_all_done)
 		
-		# Check Exit button
-		elif not button_clicked["Exit"] and is_point_in_button(mouse_pos, exit_button):
-			button_clicked["Exit"] = true
-			tumble_button(exit_button, true)
+		if is_all_done:
 			reveal_character()
 
+func are_all_buttons_clicked() -> bool:
+	for key in button_clicked:
+		if button_clicked[key] == false:
+			return false
+	return true
+
 func is_point_in_button(point: Vector2, button: Node2D) -> bool:
-	if not button:
-		return false
-	
+	if not button: return false
 	var icon = button.get_node_or_null("Icon")
-	if not icon:
-		return false
+	if not icon: return false
 	
-	# Get the button's bounding box (approximately)
 	var button_pos = button.global_position
-	var half_width = 352  # 5.5 * 128 / 2 (scaled icon width)
-	var half_height = 121  # 1.89 * 128 / 2 (scaled icon height)
+	var half_width = 352 
+	var half_height = 121
 	
 	return (point.x >= button_pos.x - half_width and point.x <= button_pos.x + half_width and
 			point.y >= button_pos.y - half_height and point.y <= button_pos.y + half_height)
 
-func tumble_button(button: Node2D, is_exit: bool):
-	# Capture initial position
+func tumble_button(button: Node2D, should_trigger_start: bool):
 	var start_pos = button.position
-	
-	# Create tumbling animation using Tween
 	var tween = create_tween()
 	tween.set_parallel(true)
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.set_ease(Tween.EASE_IN)
 	
-	# Random tumble direction (left or right)
 	var direction = 1 if randf() > 0.5 else -1
 	
-	# Rotate and fall WAY off screen (1200px should definitely be enough)
 	tween.tween_property(button, "rotation", direction * (PI * 2) + randf_range(-0.5, 0.5), 1.2)
 	tween.tween_property(button, "position:y", start_pos.y + 1200, 1.2)
 	tween.tween_property(button, "position:x", start_pos.x + direction * randf_range(200, 400), 1.2)
 	
-	# If Exit button, transition to game after animation
-	if is_exit:
+	# Only start the game if this was the final button
+	if should_trigger_start:
 		tween.chain().tween_callback(func(): start_game()).set_delay(0.5)
 
 func reveal_character():
-	if not hidden_character:
-		return
-	
-	# Fade in the character
+	if not hidden_character: return
 	var tween = create_tween()
 	tween.tween_property(hidden_character, "modulate:a", 1.0, 1.0).set_delay(0.5)
-	
-	# Character waves or does a little animation
 	tween.tween_property(hidden_character, "position:y", hidden_character.position.y - 20, 0.3)
 	tween.tween_property(hidden_character, "position:y", hidden_character.position.y, 0.3)
 
 func start_game():
-	# Load the first level
 	get_tree().change_scene_to_file("res://Scenes/Main/level_1.tscn")
