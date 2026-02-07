@@ -8,57 +8,85 @@ extends CharacterBody2D
 @export var friction: float = 800.0
 @export var walk_speed: float = 200.0
 
-# --- YANK SPECS ---
-# The main force pulling you to the hook
-@export var pull_power: float = 500.0 
-
-# The "Another Force" (The vertical flick)
-# This lifts you up slightly every time you hook, like a fisherman yanking the rod.
-@export var lift_power: float = 300.0 
+# --- SPECS ---
+@export var max_pull_power: float = 1200.0 
+@export var max_lift_power: float = 600.0 
 
 func _ready():
 	rod.launch_requested.connect(_on_rod_launch)
 
 func _physics_process(delta):
-	# 1. Gravity
+	# ... (Keep gravity and walking logic exactly the same) ...
 	velocity.y += gravity * delta
-	
-	# 2. Walk
 	var dir = Input.get_axis("ui_left", "ui_right")
 	if dir:
 		velocity.x = move_toward(velocity.x, dir * walk_speed, 1000 * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0, friction * delta)
-
 	move_and_slide()
-	
 	camera.is_aiming = (rod.current_state == rod.State.CHARGING)
 
-# --- THE "FISHERMAN YANK" LOGIC ---
-func _on_rod_launch(target_point: Vector2):
-	# 1. Get the Pull Direction (Straight to hook)
+# --- THE CORE BRAIN ---
+func _on_rod_launch(target_point: Vector2, charge_ratio: float, target_body: Node):
+	
+	# APPROACH 3: WRONG TOOL FOR THE JOB (Interactions)
+	# If the object has a function "on_hooked", run it and STOP movement.
+	if target_body.has_method("on_hooked"):
+		target_body.on_hooked()
+		return # Do not move the player
+		
+	# APPROACH 2: ENVIRONMENTAL PRANKSTER (Traps)
+	# Check for specific Groups
+	if target_body.is_in_group("bouncy"):
+		apply_repel_force(target_point, charge_ratio)
+		return
+	
+	# APPROACH 1: PHYSICS BETRAYAL (Mass Check)
+	# If it's a RigidBody (Physics Object) and it's light...
+	if target_body is RigidBody2D:
+		# Assume objects < 5kg are "Light"
+		if target_body.mass < 5.0:
+			pull_object_to_me(target_body, charge_ratio)
+			return
+
+	# DEFAULT BEHAVIOR: Pull Player to Target
+	pull_player_to_target(target_point, charge_ratio)
+
+# --- HELPER FUNCTIONS ---
+
+func pull_player_to_target(target_point: Vector2, charge_ratio: float):
 	var pull_dir = (target_point - global_position).normalized()
+	if velocity.y > 0: velocity.y = 0 # Crisp catch
 	
-	# 2. Reset Vertical Velocity? (Optional)
-	# If falling fast, kill the fall speed so the yank feels crisp
-	if velocity.y > 0:
-		velocity.y = 0
+	var power = max_pull_power * clamp(charge_ratio, 0.4, 1.0)
+	var lift = max_lift_power * clamp(charge_ratio, 0.4, 1.0)
 	
-	# 3. APPLY FORCES
-	# Force A: Pull towards hook
-	var force_a = pull_dir * pull_power
+	# Floor Vault Optimization
+	if pull_dir.y > 0: 
+		pull_dir.y = 0
+		lift *= 1.5
+		
+	velocity += (pull_dir * power) + (Vector2.UP * lift)
 	
-	# Force B: The "Another Force" (Vertical Lift)
-	# We always add an upward kick, regardless of where you aimed
-	var force_b = Vector2.UP * lift_power
+	camera.add_trauma(0.5 * charge_ratio)
+	limit_speed()
+
+func pull_object_to_me(body: RigidBody2D, charge_ratio: float):
+	var dir_to_me = (global_position - body.global_position).normalized()
+	var strength = max_pull_power * charge_ratio * 1.5
 	
-	# Combine them (Impulse)
-	# Using += blends this force with your current movement
-	velocity += force_a + force_b
+	# Yank the object towards us
+	body.apply_central_impulse(dir_to_me * strength)
 	
-	camera.add_trauma(0.6)
-	
-	# 4. Cap Speed (Prevents game-breaking speed stacking)
-	# If the yank makes us too fast, clamp it
+	# Tiny recoil for player
+	velocity -= dir_to_me * 200
+
+func apply_repel_force(target_point: Vector2, charge_ratio: float):
+	# Used for "Bouncy" walls - Fling player BACKWARDS
+	var dir_away = (global_position - target_point).normalized()
+	velocity = dir_away * max_pull_power * 1.5 # Super bounce
+	camera.add_trauma(0.8)
+
+func limit_speed():
 	if velocity.length() > 1500:
 		velocity = velocity.normalized() * 1500

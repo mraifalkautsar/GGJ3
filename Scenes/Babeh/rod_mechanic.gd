@@ -1,8 +1,7 @@
 class_name RodMechanic extends Node2D
 
 # --- SIGNALS ---
-# This tells the player: "Launch towards this point NOW!"
-signal launch_requested(target_point: Vector2)
+signal launch_requested(target_point: Vector2, charge_ratio: float, target_body: Node)
 
 # --- CONFIGURATION ---
 @export var hook_scene: PackedScene 
@@ -52,12 +51,12 @@ func throw_hook():
 	var dir = (get_global_mouse_position() - global_position).normalized()
 	active_hook.launch(dir, current_power)
 
-func _on_hook_landed(pos: Vector2):
-	# 1. TRIGGER THE LAUNCH
-	# We send the position to the PlayerController
-	launch_requested.emit(pos)
+func _on_hook_landed(pos: Vector2, collider: Object):
+	var ratio = current_power / max_charge
 	
-	# 2. DISCONNECT IMMEDIATELY
+	# Pass everything to the Player
+	launch_requested.emit(pos, ratio, collider)
+	
 	reset_rod()
 
 func reset_rod():

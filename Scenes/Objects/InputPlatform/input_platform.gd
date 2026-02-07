@@ -4,11 +4,11 @@ extends AnimatableBody2D
 var velocity: Vector2 = Vector2.ZERO
 
 func _physics_process(delta: float) -> void:
-    var direction = Input.get_axis("Move_Left", "Move_Right")
+	var direction = Input.get_axis("Move_Left", "Move_Right")
 
-    if direction:
-        velocity.x = direction * move_speed
-    else:
-        velocity.x = 0
+	if direction:
+		velocity.x = direction * move_speed
+	else:
+		velocity.x = 0
 
-    var collision = move_and_collide(velocity * delta)
+	var collision = move_and_collide(velocity * delta)
