@@ -11,7 +11,6 @@ extends CharacterBody2D
 func _ready():
 	add_to_group("Player")
 	rod.teleport_requested.connect(_on_teleport_requested)
-	rod.player_swap_requested.connect(swap_position_with)
 
 func _physics_process(delta):
 	# 1. Gravity

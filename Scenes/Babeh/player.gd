@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@onready var rod: RodMechanic = $RodMechanic
-@onready var camera: Camera2D = $CameraSystem
+@onready var rod_mechanic: RodMechanic = $RodMechanic
+@onready var camera_system: Camera2D = $CameraSystem
 
 # --- PHYSICS ---
 @export var gravity: float = 980.0
@@ -13,7 +13,7 @@ extends CharacterBody2D
 @export var max_lift_power: float = 600.0 
 
 func _ready():
-	rod.launch_requested.connect(_on_rod_launch)
+	rod_mechanic.launch_requested.connect(_on_rod_launch)
 
 func _physics_process(delta):
 	# ... (Keep gravity and walking logic exactly the same) ...
@@ -24,7 +24,7 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, friction * delta)
 	move_and_slide()
-	camera.is_aiming = (rod.current_state == rod.State.CHARGING)
+	camera_system.is_aiming = (rod_mechanic.current_state == rod_mechanic.State.CHARGING)
 
 # --- THE CORE BRAIN ---
 func _on_rod_launch(target_point: Vector2, charge_ratio: float, target_body: Node):
@@ -68,7 +68,7 @@ func pull_player_to_target(target_point: Vector2, charge_ratio: float):
 		
 	velocity += (pull_dir * power) + (Vector2.UP * lift)
 	
-	camera.add_trauma(0.5 * charge_ratio)
+	camera_system.add_trauma(0.5 * charge_ratio)
 	limit_speed()
 
 func pull_object_to_me(body: RigidBody2D, charge_ratio: float):
@@ -85,7 +85,7 @@ func apply_repel_force(target_point: Vector2, charge_ratio: float):
 	# Used for "Bouncy" walls - Fling player BACKWARDS
 	var dir_away = (global_position - target_point).normalized()
 	velocity = dir_away * max_pull_power * 1.5 # Super bounce
-	camera.add_trauma(0.8)
+	camera_system.add_trauma(0.8)
 
 func limit_speed():
 	if velocity.length() > 1500:
