@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://8r08chl8ges4"]
+
+[ext_resource type="Texture2D" uid="uid://d3bpr1kbywtly" path="res://Assets/Pasar/Bg without truck.PNG" id="1_deqog"]
+[ext_resource type="Texture2D" uid="uid://1c8hmhxp064r" path="res://Assets/Pasar/Tanah.PNG" id="2_kvw4q"]
+[ext_resource type="Texture2D" uid="uid://dpou3xpx604bm" path="res://Assets/Pasar/Tanah with sampah.PNG" id="3_yvj08"]
+[ext_resource type="Texture2D" uid="uid://6opvpgq2sujx" path="res://Assets/Pasar/Front tiang.PNG" id="4_jap35"]
+[ext_resource type="Texture2D" uid="uid://kgrjkcv0nav5" path="res://Assets/Pasar/Bg with sampah.PNG" id="5_kvw4q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrdnt"]
+size = Vector2(567, 1121.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrinw"]
+size = Vector2(498, 282.5)
+
+[sub_resource type="Animation" id="Animation_yvj08"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("World/TextureRect4:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_kvw4q")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("World/TextureRect:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_deqog")]
+}
+
+[sub_resource type="Animation" id="Animation_jap35"]
+resource_name = "Truk Buang Sampah"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("World/TextureRect4:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_kvw4q"), ExtResource("3_yvj08")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("World/TextureRect:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("1_deqog"), ExtResource("5_kvw4q")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e1mly"]
+_data = {
+&"RESET": SubResource("Animation_yvj08"),
+&"Truk Buang Sampah": SubResource("Animation_jap35")
+}
+
+[node name="Level1" type="Node2D" unique_id=1963387392]
+
+[node name="Tanah" type="StaticBody2D" parent="." unique_id=2092404085]
+position = Vector2(347, 739)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tanah" unique_id=271581617]
+position = Vector2(274, 179)
+shape = SubResource("RectangleShape2D_xrdnt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Tanah" unique_id=1960415494]
+position = Vector2(1166, 293)
+scale = Vector2(0.36, 0.52519804)
+shape = SubResource("RectangleShape2D_xrdnt")
+
+[node name="Tiang" type="StaticBody2D" parent="." unique_id=2106708865]
+position = Vector2(-202, -17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiang" unique_id=1765339370]
+position = Vector2(274, 571.125)
+shape = SubResource("RectangleShape2D_xrdnt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Tiang" unique_id=451596663]
+position = Vector2(2121, 578)
+shape = SubResource("RectangleShape2D_xrdnt")
+
+[node name="Sampah" type="Area2D" parent="." unique_id=1974542647]
+position = Vector2(910, 779)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sampah" unique_id=172123352]
+position = Vector2(249, 163.75)
+shape = SubResource("RectangleShape2D_wrinw")
+
+[node name="Exit" type="Area2D" parent="." unique_id=8793994]
+position = Vector2(1440, 390.00003)
+scale = Vector2(0.3227664, 1.050551)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=1042795467]
+position = Vector2(249, 163.75)
+shape = SubResource("RectangleShape2D_wrinw")
+
+[node name="World" type="CanvasLayer" parent="." unique_id=1340250255]
+
+[node name="TextureRect" type="TextureRect" parent="World" unique_id=504837708]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_deqog")
+
+[node name="TextureRect3" type="TextureRect" parent="World" unique_id=1165142767]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_kvw4q")
+
+[node name="TextureRect4" type="TextureRect" parent="World" unique_id=164901102]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_kvw4q")
+
+[node name="TextureRect2" type="TextureRect" parent="World" unique_id=137396505]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("4_jap35")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1538948635]
+libraries/ = SubResource("AnimationLibrary_e1mly")
