@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cpac4qiehp2qc"]
+
+[ext_resource type="Script" uid="uid://fc6ga2jsvg0m" path="res://Scenes/Main/Intro.gd" id="1_8s5q0"]
+[ext_resource type="VideoStream" uid="uid://cthjpy7lvch1p" path="res://Assets/Intro_Babeh.ogv" id="1_u7lvf"]
+[ext_resource type="Script" uid="uid://kvm0b8e24fda" path="res://Scenes/Main/video_stream_player.gd" id="3_souyd"]
+
+[node name="IntroScene" type="CanvasLayer" unique_id=853419552]
+script = ExtResource("1_8s5q0")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=1016812248]
+offset_right = 730.0
+offset_bottom = 584.0
+stream = ExtResource("1_u7lvf")
+autoplay = true
+expand = true
+script = ExtResource("3_souyd")
