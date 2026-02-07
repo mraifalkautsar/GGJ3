@@ -1,46 +1,73 @@
 [gd_scene format=3 uid="uid://budte4ik1rge5"]
 
 [ext_resource type="Texture2D" uid="uid://moyppe4bras4" path="res://icon.svg" id="1_hotcy"]
-[ext_resource type="PackedScene" uid="uid://c6spye233g43g" path="res://Scenes/Babeh_Puzzle/player.tscn" id="2_dbwwm"]
+[ext_resource type="PackedScene" uid="uid://ctf7lbdwu8mbd" path="res://Scenes/Playground/Blocking.tscn" id="1_uvwl6"]
+[ext_resource type="PackedScene" uid="uid://c6spye233g43g" path="res://Scenes/Babeh/player.tscn" id="2_dbwwm"]
+[ext_resource type="PackedScene" uid="uid://bjqugrtemrfbx" path="res://Scenes/Playground/FloorBlock.tscn" id="4_kh02m"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvwl6"]
-size = Vector2(482, 129)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hotcy"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dbwwm"]
+size = Vector2(123, 122)
 
 [node name="Playground" type="Node2D" unique_id=2105118215]
 
-[node name="Floor" type="StaticBody2D" parent="." unique_id=2063810707]
-position = Vector2(63, 260)
-collision_layer = 3
-
-[node name="Sprite2D" type="Sprite2D" parent="Floor" unique_id=451314366]
-position = Vector2(177.5, 0)
-scale = Vector2(3.7734375, 1)
-texture = ExtResource("1_hotcy")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1371731659]
-position = Vector2(177, 0.5)
-shape = SubResource("RectangleShape2D_uvwl6")
-
-[node name="Floor2" type="StaticBody2D" parent="." unique_id=2054207294]
-position = Vector2(184, 204)
-collision_layer = 3
-
-[node name="Sprite2D" type="Sprite2D" parent="Floor2" unique_id=285665019]
-position = Vector2(177.5, 0)
-scale = Vector2(3.7734375, 1)
-texture = ExtResource("1_hotcy")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2" unique_id=1668961781]
-position = Vector2(177, 0.5)
-shape = SubResource("RectangleShape2D_uvwl6")
+[node name="Floor" parent="." unique_id=817428041 instance=ExtResource("1_uvwl6")]
+position = Vector2(-348, 265.00003)
+scale = Vector2(1.5199988, 0.76000243)
 
 [node name="Player" parent="." unique_id=1955628673 instance=ExtResource("2_dbwwm")]
-position = Vector2(10, 180)
+position = Vector2(-369, 117)
+max_lift_power = 900.0
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1063339367]
-position = Vector2(222, 5)
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=459226380]
+position = Vector2(-122, -224)
+collision_layer = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=724120726]
-shape = SubResource("RectangleShape2D_hotcy")
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=1138932702]
+texture = ExtResource("1_hotcy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=134902055]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_dbwwm")
+
+[node name="Floor2" parent="." unique_id=2119444619 instance=ExtResource("4_kh02m")]
+position = Vector2(142, 202)
+
+[node name="Floor3" parent="." unique_id=937380962 instance=ExtResource("4_kh02m")]
+position = Vector2(457, -244.00003)
+scale = Vector2(0.24232128, 6.0443163)
+
+[node name="Floor4" parent="." unique_id=2097521957 instance=ExtResource("4_kh02m")]
+position = Vector2(259, -481)
+scale = Vector2(0.16632168, 5.784503)
+
+[node name="Floor5" parent="." unique_id=101692318 instance=ExtResource("4_kh02m")]
+position = Vector2(-347, -59.000004)
+scale = Vector2(1.6151342, 0.90039116)
+
+[node name="Floor6" parent="." unique_id=659372184 instance=ExtResource("4_kh02m")]
+position = Vector2(562, -812)
+scale = Vector2(0.4993116, 0.61106944)
+
+[node name="Floor7" parent="." unique_id=303412365 instance=ExtResource("4_kh02m")]
+position = Vector2(659.00006, -595)
+scale = Vector2(0.30542636, 0.4791329)
+
+[node name="Floor8" parent="." unique_id=1583613887 instance=ExtResource("4_kh02m")]
+position = Vector2(883.99994, -813)
+scale = Vector2(0.4993116, 0.61106944)
+
+[node name="Floor12" parent="." unique_id=1051607929 instance=ExtResource("4_kh02m")]
+position = Vector2(313, -1083)
+scale = Vector2(1.129621, 0.7459724)
+
+[node name="Floor11" parent="." unique_id=1160092865 instance=ExtResource("4_kh02m")]
+position = Vector2(1126.0001, -959.00006)
+scale = Vector2(0.4993116, 2.8538165)
+
+[node name="Floor9" parent="." unique_id=809146088 instance=ExtResource("4_kh02m")]
+position = Vector2(858.99994, -693)
+scale = Vector2(0.10959519, 1.2649297)
+
+[node name="Floor10" parent="." unique_id=1524622227 instance=ExtResource("4_kh02m")]
+position = Vector2(314.99997, -892)
+scale = Vector2(1.0944296, 0.62924695)

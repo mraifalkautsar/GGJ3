@@ -9,6 +9,8 @@
 
 [node name="Player" type="CharacterBody2D" unique_id=1955628673]
 script = ExtResource("1_m6ksk")
+max_pull_power = 600.0
+max_lift_power = 300.0
 
 [node name="RodMechanic" type="Node2D" parent="." unique_id=1866260536]
 script = ExtResource("2_wy7u5")
@@ -17,7 +19,7 @@ max_charge = 800.0
 charge_rate = 800.0
 
 [node name="LineVisual" type="Line2D" parent="RodMechanic" unique_id=474168654]
-width = 2.0
+width = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1961694163]
 shape = SubResource("CapsuleShape2D_wy7u5")
