@@ -18,6 +18,10 @@ config/name="GGJ3"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*uid://fndg5ypxaomt"
+
 [display]
 
 window/size/viewport_width=1920

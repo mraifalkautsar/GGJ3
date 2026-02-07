@@ -1,21 +1,44 @@
 [gd_scene format=3 uid="uid://1y2utjigwiyb"]
 
-[ext_resource type="Texture2D" uid="uid://moyppe4bras4" path="res://icon.svg" id="1_forwa"]
-[ext_resource type="Script" uid="uid://c3g5ow6t1j0py" path="res://Scenes/Main/menu_controller.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://bpf4e4sl8vfxe" path="res://Scenes/Main/menu_controller.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://vympwop2vhxc" path="res://Assets/Characters/character_0000.png" id="2_character"]
+[ext_resource type="Texture2D" uid="uid://da5i61nx6nahr" path="res://Assets/level0/IMG_3215.PNG" id="2_rgnbq"]
+[ext_resource type="Texture2D" uid="uid://bdmx4wwteu4fd" path="res://Assets/level0/IMG_3216.PNG" id="3_7gkfm"]
+[ext_resource type="Texture2D" uid="uid://c4u1ltv5vtt4t" path="res://Assets/level0/IMG_3227.PNG" id="4_xw16n"]
+[ext_resource type="Texture2D" uid="uid://7lp5pck0yvbp" path="res://Assets/level0/IMG_3219.PNG" id="5_6moem"]
+[ext_resource type="Texture2D" uid="uid://byhi2yc44ldhf" path="res://Assets/level0/IMG_3218.PNG" id="6_xw16n"]
 
 [node name="MainMenu" type="Node2D" unique_id=1379607231]
 script = ExtResource("1_script")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1029266841]
+layer = -1
+
+[node name="BG" type="TextureRect" parent="CanvasLayer" unique_id=1362187945]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_rgnbq")
+
+[node name="BG2" type="TextureRect" parent="CanvasLayer" unique_id=1118036183]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7gkfm")
 
 [node name="Start" type="Node2D" parent="." unique_id=1310296219]
 position = Vector2(520, 232)
 
 [node name="Icon" type="Sprite2D" parent="Start" unique_id=752789799]
 position = Vector2(2.842171e-14, 0)
-scale = Vector2(5.5, 1.8906251)
-texture = ExtResource("1_forwa")
+texture = ExtResource("4_xw16n")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Start" unique_id=1680898829]
+visible = false
 z_index = 6
 offset_left = -304.00006
 offset_top = -94.99999
@@ -33,10 +56,10 @@ position = Vector2(520, 545)
 
 [node name="Icon" type="Sprite2D" parent="Options" unique_id=610211293]
 position = Vector2(6.1035156e-05, -7)
-scale = Vector2(5.5, 1.8906251)
-texture = ExtResource("1_forwa")
+texture = ExtResource("5_6moem")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Options" unique_id=1666885084]
+visible = false
 z_index = 6
 offset_left = -320.0
 offset_top = -103.0
@@ -53,10 +76,10 @@ position = Vector2(520, 864)
 
 [node name="Icon" type="Sprite2D" parent="Exit" unique_id=941062331]
 position = Vector2(6.1035156e-05, -7)
-scale = Vector2(5.5, 1.8906251)
-texture = ExtResource("1_forwa")
+texture = ExtResource("6_xw16n")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Exit" unique_id=198978598]
+visible = false
 z_index = 6
 offset_left = -312.0
 offset_top = -103.0
@@ -68,6 +91,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="HiddenCharacter" type="Sprite2D" parent="." unique_id=1233278750]
+visible = false
 z_index = -1
 position = Vector2(504, 864)
 scale = Vector2(8, 8)

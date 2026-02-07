@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b1lbdxepwvfjd"
+path="res://.godot/imported/Cute Anime Footsteps (One Piece Chopper) - Sound Effect for editing.mp3-3088a990601b0f786128bf995b6bfb60.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/Cute Anime Footsteps (One Piece Chopper) - Sound Effect for editing.mp3"
+dest_files=["res://.godot/imported/Cute Anime Footsteps (One Piece Chopper) - Sound Effect for editing.mp3-3088a990601b0f786128bf995b6bfb60.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

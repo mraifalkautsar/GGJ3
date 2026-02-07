@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dvvfq1ave5v18"
+path="res://.godot/imported/Puzzle Music No Copyright ＂Attempt＂.mp3-062044a4ec26dcf442b586d5694028ab.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/Puzzle Music No Copyright ＂Attempt＂.mp3"
+dest_files=["res://.godot/imported/Puzzle Music No Copyright ＂Attempt＂.mp3-062044a4ec26dcf442b586d5694028ab.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
