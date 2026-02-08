@@ -1,21 +1,43 @@
 [gd_scene format=3 uid="uid://1y2utjigwiyb"]
 
 [ext_resource type="Script" uid="uid://bpf4e4sl8vfxe" path="res://Scenes/Main/menu_controller.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://vympwop2vhxc" path="res://Assets/Characters/character_0000.png" id="2_character"]
+[ext_resource type="Texture2D" uid="uid://bwou8mb4ldnk8" path="res://Assets/level0/Poster.PNG" id="2_7d75u"]
 [ext_resource type="Texture2D" uid="uid://da5i61nx6nahr" path="res://Assets/level0/IMG_3215.PNG" id="2_rgnbq"]
+[ext_resource type="PackedScene" uid="uid://cpac4qiehp2qc" path="res://Scenes/Main/intro.tscn" id="3_5r5w4"]
 [ext_resource type="Texture2D" uid="uid://bdmx4wwteu4fd" path="res://Assets/level0/IMG_3216.PNG" id="3_7gkfm"]
+[ext_resource type="Texture2D" uid="uid://bpn7a0ry1g3q1" path="res://Assets/level0/IMG_3269.PNG" id="4_1ahfh"]
 [ext_resource type="Texture2D" uid="uid://ck2xacff5o7io" path="res://Assets/level0/IMG_3217.PNG" id="4_6moem"]
 [ext_resource type="Texture2D" uid="uid://c4u1ltv5vtt4t" path="res://Assets/level0/IMG_3227.PNG" id="4_xw16n"]
 [ext_resource type="Texture2D" uid="uid://7lp5pck0yvbp" path="res://Assets/level0/IMG_3219.PNG" id="5_6moem"]
 [ext_resource type="Texture2D" uid="uid://byhi2yc44ldhf" path="res://Assets/level0/IMG_3218.PNG" id="6_xw16n"]
+[ext_resource type="Texture2D" uid="uid://c1527pqwyu8pq" path="res://Assets/mancing-spritesheet.png" id="8_6moem"]
+[ext_resource type="Texture2D" uid="uid://c42pcdb8ppmo0" path="res://Logo.PNG" id="12_cal7j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ahfh"]
+atlas = ExtResource("8_6moem")
+region = Rect2(0, 4000, 1000, 1000)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7d75u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ahfh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="MainMenu" type="Node2D" unique_id=1379607231]
 script = ExtResource("1_script")
+poster_texture = ExtResource("2_7d75u")
+next_scene = ExtResource("3_5r5w4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1029266841]
 layer = -1
 
 [node name="BG" type="TextureRect" parent="CanvasLayer" unique_id=1362187945]
+z_index = -5
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -24,12 +46,18 @@ grow_vertical = 2
 texture = ExtResource("2_rgnbq")
 
 [node name="BG2" type="TextureRect" parent="CanvasLayer" unique_id=1118036183]
+z_index = -3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_7gkfm")
+
+[node name="Crowd" type="Sprite2D" parent="CanvasLayer" unique_id=615509214]
+position = Vector2(1016, 632)
+scale = Vector2(0.71428573, 0.71428573)
+texture = ExtResource("4_1ahfh")
 
 [node name="Start" type="Node2D" parent="." unique_id=1310296219]
 position = Vector2(520, 232)
@@ -58,15 +86,15 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Options" type="Node2D" parent="." unique_id=221993443]
-position = Vector2(1497, 389)
+position = Vector2(192, 567)
 
 [node name="Img3217" type="Sprite2D" parent="Options" unique_id=1161695908]
-position = Vector2(18, 77)
+position = Vector2(87, 80)
 scale = Vector2(0.28764477, 0.2876448)
 texture = ExtResource("4_6moem")
 
 [node name="Icon" type="Sprite2D" parent="Options" unique_id=610211293]
-position = Vector2(6.1035156e-05, -7)
+position = Vector2(95, -61)
 texture = ExtResource("5_6moem")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Options" unique_id=1666885084]
@@ -83,7 +111,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Exit" type="Node2D" parent="." unique_id=1176691124]
-position = Vector2(355, 567)
+position = Vector2(1560, 392)
 
 [node name="Img3217" type="Sprite2D" parent="Exit" unique_id=2116875713]
 position = Vector2(18, 77)
@@ -91,7 +119,7 @@ scale = Vector2(0.28764477, 0.2876448)
 texture = ExtResource("4_6moem")
 
 [node name="Icon" type="Sprite2D" parent="Exit" unique_id=941062331]
-position = Vector2(6.1035156e-05, -7)
+position = Vector2(29, -63)
 texture = ExtResource("6_xw16n")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Exit" unique_id=198978598]
@@ -106,9 +134,16 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="HiddenCharacter" type="Sprite2D" parent="." unique_id=1233278750]
-visible = false
+[node name="Babeh" type="Node2D" parent="." unique_id=1950479420]
+position = Vector2(355, 567)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Babeh" unique_id=1552684442]
 z_index = -1
-position = Vector2(504, 864)
-scale = Vector2(8, 8)
-texture = ExtResource("2_character")
+position = Vector2(1229, -247)
+scale = Vector2(0.12600006, 0.12600006)
+sprite_frames = SubResource("SpriteFrames_7d75u")
+
+[node name="Logo" type="Sprite2D" parent="." unique_id=492740392]
+position = Vector2(976, 216.00002)
+scale = Vector2(0.29687497, 0.29687497)
+texture = ExtResource("12_cal7j")

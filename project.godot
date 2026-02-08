@@ -14,7 +14,9 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="GGJ3"
+config/name="Don't Rush Babeh"
+config/description="Babeh wants to go home, but don't rush him, he has problem with his knees and heart!s"
+run/main_scene="uid://1y2utjigwiyb"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
