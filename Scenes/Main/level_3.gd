@@ -71,4 +71,4 @@ func move_object(body: Node2D, target_pos: Vector2):
 	tween.set_ease(Tween.EASE_OUT)
 	
 	# Move to the specific target position
-	tween.tween_property(body, "position", target_pos, 0.5)
+	tween.tween_property(body, "position", target_pos, 0.25)

@@ -15,6 +15,7 @@ extends CharacterBody2D
 @export var max_lift_power: float = 600.0 
 
 func _ready():
+	add_to_group("Player")
 	rod_mechanic.launch_requested.connect(_on_rod_launch)
 
 func _physics_process(delta):

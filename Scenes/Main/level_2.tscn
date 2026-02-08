@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://72swr0q83egv" path="res://Assets/level2/IMG_3233.PNG" id="8_k7gxp"]
 [ext_resource type="Texture2D" uid="uid://bqcyoeibek13q" path="res://Assets/level2/IMG_3236.PNG" id="10_k7gxp"]
 [ext_resource type="Texture2D" uid="uid://b1x8swfq6p4qj" path="res://Assets/level2/IMG_3237.PNG" id="12_k7gxp"]
+[ext_resource type="Script" uid="uid://cdrmpr7yinh2p" path="res://Scenes/Main/exit.gd" id="13_v4rsu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v4rsu"]
 animations = [{
@@ -50,6 +51,9 @@ size = Vector2(833, 253.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q37cu"]
 size = Vector2(142.25, 1300.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h8i5c"]
+size = Vector2(176.13568, 252.86179)
 
 [node name="Level2" type="Node2D" unique_id=4385575]
 
@@ -133,5 +137,17 @@ shape = SubResource("RectangleShape2D_q37cu")
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="WorldCollisions/Tanah" unique_id=272024405]
 position = Vector2(-73, 654)
 shape = SubResource("RectangleShape2D_q37cu")
+
+[node name="Exit" type="Area2D" parent="." unique_id=475050221]
+position = Vector2(1430, 907)
+scale = Vector2(0.9992291, 0.8265385)
+script = ExtResource("13_v4rsu")
+metadata/_custom_type_script = "uid://cdrmpr7yinh2p"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=1609649039]
+position = Vector2(91.07019, 85.29541)
+shape = SubResource("RectangleShape2D_h8i5c")
+
+[connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
 
 [editable path="Player"]

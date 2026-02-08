@@ -6,7 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://1c8hmhxp064r" path="res://Assets/Pasar/Tanah.PNG" id="2_kvw4q"]
 [ext_resource type="Texture2D" uid="uid://dpou3xpx604bm" path="res://Assets/Pasar/Tanah with sampah.PNG" id="3_yvj08"]
 [ext_resource type="Texture2D" uid="uid://6opvpgq2sujx" path="res://Assets/Pasar/Front tiang.PNG" id="4_jap35"]
+[ext_resource type="Texture2D" uid="uid://bvodd0ybagpkk" path="res://Assets/Pasar/Aset/IMG_3213.PNG" id="7_2ox8k"]
+[ext_resource type="Script" uid="uid://cdrmpr7yinh2p" path="res://Scenes/Main/exit.gd" id="7_e1mly"]
 [ext_resource type="PackedScene" uid="uid://bl4f8tj2ia0d7" path="res://Scenes/Babeh/player.tscn" id="7_jap35"]
+[ext_resource type="Texture2D" uid="uid://com3edqtawtgf" path="res://Assets/Pasar/Aset/IMG_3202.PNG" id="10_s731f"]
+[ext_resource type="Texture2D" uid="uid://btjf2m75iiy3h" path="res://Assets/Pasar/Aset/IMG_3206.PNG" id="11_6mn4f"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e1mly"]
 load_path = "res://.godot/imported/Bg with sampah.PNG-8d7aaddc890116b9666cf8c28942c261.ctex"
@@ -183,6 +187,11 @@ offset_right = 1923.0
 offset_bottom = 1080.0
 texture = ExtResource("4_jap35")
 
+[node name="Img3213" type="Sprite2D" parent="World" unique_id=1433573006]
+position = Vector2(594, 670)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_2ox8k")
+
 [node name="Tanah" type="StaticBody2D" parent="." unique_id=2092404085]
 position = Vector2(347, 739)
 collision_layer = 3
@@ -223,9 +232,10 @@ shape = SubResource("RectangleShape2D_s22vf")
 [node name="Exit" type="Area2D" parent="." unique_id=8793994]
 position = Vector2(1440, 390.00003)
 scale = Vector2(0.3227664, 1.050551)
+script = ExtResource("7_e1mly")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=1042795467]
-position = Vector2(266.44675, 185.61684)
+position = Vector2(281.93784, 190.37625)
 shape = SubResource("RectangleShape2D_7exki")
 
 [node name="Player" parent="." unique_id=1955628673 instance=ExtResource("7_jap35")]
@@ -249,5 +259,17 @@ position = Vector2(960, 540)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1017718365]
 position = Vector2(1170, 610)
 shape = SubResource("RectangleShape2D_s731f")
+
+[node name="Img3202" type="Sprite2D" parent="." unique_id=1320968796]
+position = Vector2(761.6542, 607.12494)
+scale = Vector2(0.4066727, 0.41204366)
+texture = ExtResource("10_s731f")
+
+[node name="Img3206" type="Sprite2D" parent="." unique_id=671453635]
+position = Vector2(758.99994, 684)
+scale = Vector2(0.6214289, 0.6214289)
+texture = ExtResource("11_6mn4f")
+
+[connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
 
 [editable path="Player"]

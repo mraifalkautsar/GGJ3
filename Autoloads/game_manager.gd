@@ -16,15 +16,11 @@ signal game_over_timeout
 var current_level_index: int = 0
 var time_remaining: float = 0.0
 var is_timer_active: bool = false
-var save_path: String = "user://savegame.cfg"
 var good_ending: bool = true
 
 func _ready():
 	# Connect signals
 	level_completed.connect(_on_level_completed)
-	
-	# Try to load save data
-	load_game()
 	
 	# Initialize Timer (Only starts when you enter the first level)
 	time_remaining = total_game_time
@@ -54,7 +50,6 @@ func _on_level_completed():
 	
 	if next_index < levels.size():
 		current_level_index = next_index
-		save_game() # Auto-save progress
 		load_current_level()
 	else:
 		victory()
@@ -91,24 +86,6 @@ func game_over():
 	emit_signal("game_over_timeout")
 	# Load Game Over Scene or restart
 	# get_tree().reload_current_scene()
-
-# --- SAVE SYSTEM ---
-
-func save_game():
-	var config = ConfigFile.new()
-	config.set_value("Progress", "level_index", current_level_index)
-	# Optional: Save time remaining if you want time to persist across sessions
-	# config.set_value("Progress", "time_left", time_remaining)
-	config.save(save_path)
-
-func load_game():
-	var config = ConfigFile.new()
-	var err = config.load(save_path)
-	
-	if err == OK:
-		current_level_index = config.get_value("Progress", "level_index", 0)
-	else:
-		current_level_index = 0
 
 # --- HELPER FOR UI ---
 # Call this in your UI script: GameManager.get_time_string()
