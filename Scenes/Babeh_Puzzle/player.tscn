@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://c6spye233g43g"]
 
 [ext_resource type="Script" uid="uid://cx2fkpfjmnxyu" path="res://Scenes/Babeh_Puzzle/player.gd" id="1_m6ksk"]
+[ext_resource type="PackedScene" uid="uid://cdyclqqam8ux" path="res://Scenes/Babeh/dead_babeh.tscn" id="2_1uctg"]
 [ext_resource type="Script" uid="uid://dhyrrjf8rw7ig" path="res://Scenes/Babeh_Puzzle/teleport_mechanic.gd" id="2_1vcqr"]
 [ext_resource type="Texture2D" uid="uid://dvr0ovdv2nw2t" path="res://Assets/walk-spritesheet.png" id="2_ict8v"]
 [ext_resource type="PackedScene" uid="uid://8kk60rsyd7de" path="res://Scenes/Babeh_Puzzle/hook.tscn" id="3_r6fjk"]
@@ -396,6 +397,7 @@ stereo = true
 [node name="Player" type="CharacterBody2D" unique_id=1955628673]
 collision_mask = 2
 script = ExtResource("1_m6ksk")
+ragdoll_scene = ExtResource("2_1uctg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=223418868]
 sprite_frames = SubResource("SpriteFrames_44ait")

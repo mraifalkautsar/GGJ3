@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c20e6j4wqj1x3" path="res://Assets/Gameover/Sampah & genangan.PNG" id="4_c6l72"]
 [ext_resource type="Texture2D" uid="uid://2pja3rlhjlnd" path="res://Assets/Gameover/Listrik & ondel2 & pocong.PNG" id="5_7dul6"]
 [ext_resource type="Texture2D" uid="uid://3r2ju8kgkd6c" path="res://Assets/Gameover/Polisi tidur.PNG" id="6_jsqmw"]
+[ext_resource type="Texture2D" uid="uid://dtnko85w6cq0g" path="res://Assets/Gameover/Kucing.PNG" id="7_fdw0c"]
 
 [sub_resource type="Resource" id="Resource_c6l72"]
 script = ExtResource("2_3nkhq")
@@ -43,6 +44,13 @@ photo = ExtResource("6_jsqmw")
 caption = "Polisi, Polisi apa yang tidak kerja? Polisi tidur "
 metadata/_custom_type_script = "uid://dcmaod7qylydo"
 
+[sub_resource type="Resource" id="Resource_so6dg"]
+script = ExtResource("2_3nkhq")
+id = "kucing"
+photo = ExtResource("7_fdw0c")
+caption = "Meow.... Meow... "
+metadata/_custom_type_script = "uid://dcmaod7qylydo"
+
 [node name="DeadScreen" type="CanvasLayer" unique_id=1289175946]
 layer = 10
 script = ExtResource("1_wvgpa")
@@ -51,6 +59,7 @@ death_reasons = Dictionary[String, ExtResource("2_3nkhq")]({
 "bau": SubResource("Resource_7dul6"),
 "jantungan": SubResource("Resource_fdw0c"),
 "kesetrum": SubResource("Resource_jsqmw"),
+"kucing": SubResource("Resource_so6dg"),
 "polisi": SubResource("Resource_t0yi1")
 })
 

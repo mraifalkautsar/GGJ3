@@ -17,6 +17,8 @@ extends CharacterBody2D
 @export var pull_strength: float = 800.0 # Force for pulling light objects
 @export var heavy_mass_threshold: float = 5.0 # Objects lighter than this get pulled
 
+@export var ragdoll_scene: PackedScene
+
 func _ready():
 	add_to_group("Player")
 	rod.teleport_requested.connect(_on_teleport_requested)
@@ -165,7 +167,25 @@ func create_teleport_particles(pos: Vector2):
 	await get_tree().create_timer(1.0).timeout
 	particles.queue_free()
 
-func die():
+func die(damage_source_pos: Vector2 = Vector2.ZERO):
 	death_sound.play()
-	await get_tree().create_timer(1.0).timeout
-	get_tree().reload_current_scene()
+	if ragdoll_scene:
+		var ragdoll = ragdoll_scene.instantiate()
+		get_tree().current_scene.add_child(ragdoll)
+		
+		# 1. Get current state (including SCALE)
+		var is_facing_left = animated_sprite_2d.flip_h
+		var current_anim = animated_sprite_2d.animation
+		var current_frame = animated_sprite_2d.frame
+		var current_scale = scale # Grab the player's current size
+		
+		# 2. Pass it all to the ragdoll
+		# We added 'current_scale' to the end of this call
+		ragdoll.setup(global_position, velocity, is_facing_left, current_anim, current_frame, current_scale)
+		
+		# 3. Knockback
+		if damage_source_pos != Vector2.ZERO:
+			var knock_dir = (global_position - damage_source_pos).normalized()
+			ragdoll.apply_central_impulse(knock_dir * 1000) 
+
+	queue_free()

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ct46flbdd4j5n" path="res://Scenes/Babeh/dead_babeh.gd" id="1_2to8g"]
 [ext_resource type="Texture2D" uid="uid://dvr0ovdv2nw2t" path="res://Assets/walk-spritesheet.png" id="1_tn0cu"]
 [ext_resource type="Texture2D" uid="uid://c1527pqwyu8pq" path="res://Assets/mancing-spritesheet.png" id="2_2to8g"]
+[ext_resource type="Texture2D" uid="uid://cpit084ib13g3" path="res://Assets/Babeh mati.PNG" id="2_6xhk0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_njy08"]
 atlas = ExtResource("1_tn0cu")
@@ -208,6 +209,14 @@ region = Rect2(22000, 0, 1000, 1000)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_6xhk0")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_njy08")
 }],
 "loop": true,
@@ -388,7 +397,7 @@ script = ExtResource("1_2to8g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=32208545]
 sprite_frames = SubResource("SpriteFrames_6xhk0")
-animation = &"reel"
+animation = &"dead"
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=259191483]

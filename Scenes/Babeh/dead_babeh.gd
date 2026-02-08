@@ -13,7 +13,7 @@ func setup(start_pos: Vector2, start_vel: Vector2, face_direction: bool, anim_na
 	sprite.flip_h = face_direction
 	sprite.animation = anim_name
 	sprite.frame = frame_idx
-	sprite.stop()
+	sprite.play("dead")
 	
 	sprite.modulate = Color(0.7, 0.7, 0.7) 
 	angular_velocity = randf_range(10, 20) * (1 if randf() > 0.5 else -1)
