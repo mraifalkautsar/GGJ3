@@ -13,8 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://bqcyoeibek13q" path="res://Assets/level2/IMG_3236.PNG" id="10_k7gxp"]
 [ext_resource type="Texture2D" uid="uid://b1x8swfq6p4qj" path="res://Assets/level2/IMG_3237.PNG" id="12_k7gxp"]
 [ext_resource type="Script" uid="uid://cdrmpr7yinh2p" path="res://Scenes/Main/exit.gd" id="13_v4rsu"]
-[ext_resource type="AudioStream" uid="uid://dvvfq1ave5v18" path="res://Assets/Sounds/Puzzle.mp3" id="13_v4rsu"]
 [ext_resource type="AudioStream" uid="uid://cwpmptp74ih0k" path="res://Assets/Sounds/Pasar.mp3" id="14_7inj5"]
+[ext_resource type="AudioStream" uid="uid://dvvfq1ave5v18" path="res://Assets/Sounds/Puzzle.mp3" id="14_q37cu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v4rsu"]
 animations = [{
@@ -56,6 +56,7 @@ size = Vector2(142.25, 1300.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h8i5c"]
 size = Vector2(176.13568, 252.86179)
+
 [sub_resource type="Curve" id="Curve_sleep"]
 _data = [Vector2(0, 0.3), 0.0, 0.0, 0, 0, Vector2(0.4, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
@@ -157,9 +158,8 @@ metadata/_custom_type_script = "uid://cdrmpr7yinh2p"
 position = Vector2(91.07019, 85.29541)
 shape = SubResource("RectangleShape2D_h8i5c")
 
-[connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1533740845]
-stream = ExtResource("13_v4rsu")
+stream = ExtResource("14_q37cu")
 volume_db = -1.0
 autoplay = true
 
@@ -312,5 +312,7 @@ scale_amount_min = 1.2
 scale_amount_max = 2.8
 scale_amount_curve = SubResource("Curve_electric")
 color = Color(0.6, 0.8, 1, 0.8)
+
+[connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
 
 [editable path="Player"]

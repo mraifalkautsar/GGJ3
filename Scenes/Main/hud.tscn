@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://be8i1yp14mgto"]
+
+[ext_resource type="Script" uid="uid://d07f6j4iiwmpk" path="res://Scenes/Main/hud.gd" id="1_sv0y6"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1834778515]
+script = ExtResource("1_sv0y6")
+
+[node name="TimerContainer" type="Control" parent="." unique_id=1705537122]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="TimerLabel" type="Label" parent="TimerContainer" unique_id=1841632615]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "00:00"

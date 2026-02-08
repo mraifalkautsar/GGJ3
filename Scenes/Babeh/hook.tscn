@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://dgj2gbnf7uht6"]
 
 [ext_resource type="Script" uid="uid://dmbogow8fj7rd" path="res://Scenes/Babeh/hook.gd" id="1_4s0ql"]
+[ext_resource type="Texture2D" uid="uid://c1527pqwyu8pq" path="res://Assets/mancing-spritesheet.png" id="2_b4qdj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k0ubs"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4s0ql"]
 
 [node name="Hook" type="RigidBody2D" unique_id=874312443]
 collision_layer = 0
@@ -18,6 +17,8 @@ script = ExtResource("1_4s0ql")
 shape = SubResource("CircleShape2D_k0ubs")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=87412586]
-position = Vector2(0.50000024, -4.7683716e-07)
-scale = Vector2(17, 14.000001)
-texture = SubResource("PlaceholderTexture2D_4s0ql")
+position = Vector2(0, 1)
+scale = Vector2(0.4353002, 0.32608706)
+texture = ExtResource("2_b4qdj")
+region_enabled = true
+region_rect = Rect2(3010.1582, 4662.026, 70.81592, 69.78955)

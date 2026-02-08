@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://cpac4qiehp2qc"]
+[gd_scene format=3 uid="uid://c22vx8ofpikju"]
 
-[ext_resource type="Script" uid="uid://fc6ga2jsvg0m" path="res://Scenes/Main/Intro.gd" id="1_8s5q0"]
+[ext_resource type="Script" uid="uid://bu7kusgy2p7l2" path="res://Scenes/Main/Intro.gd" id="1_8s5q0"]
 [ext_resource type="VideoStream" uid="uid://cthjpy7lvch1p" path="res://Assets/Intro_Babeh.ogv" id="1_u7lvf"]
-[ext_resource type="Script" uid="uid://kvm0b8e24fda" path="res://Scenes/Main/video_stream_player.gd" id="3_souyd"]
+[ext_resource type="Script" uid="uid://cdjfnr5a71cjo" path="res://Scenes/Main/video_stream_player.gd" id="3_souyd"]
 
 [node name="IntroScene" type="CanvasLayer" unique_id=853419552]
 script = ExtResource("1_8s5q0")

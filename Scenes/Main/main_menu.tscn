@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://vympwop2vhxc" path="res://Assets/Characters/character_0000.png" id="2_character"]
 [ext_resource type="Texture2D" uid="uid://da5i61nx6nahr" path="res://Assets/level0/IMG_3215.PNG" id="2_rgnbq"]
 [ext_resource type="Texture2D" uid="uid://bdmx4wwteu4fd" path="res://Assets/level0/IMG_3216.PNG" id="3_7gkfm"]
+[ext_resource type="Texture2D" uid="uid://ck2xacff5o7io" path="res://Assets/level0/IMG_3217.PNG" id="4_6moem"]
 [ext_resource type="Texture2D" uid="uid://c4u1ltv5vtt4t" path="res://Assets/level0/IMG_3227.PNG" id="4_xw16n"]
 [ext_resource type="Texture2D" uid="uid://7lp5pck0yvbp" path="res://Assets/level0/IMG_3219.PNG" id="5_6moem"]
 [ext_resource type="Texture2D" uid="uid://byhi2yc44ldhf" path="res://Assets/level0/IMG_3218.PNG" id="6_xw16n"]
@@ -33,8 +34,13 @@ texture = ExtResource("3_7gkfm")
 [node name="Start" type="Node2D" parent="." unique_id=1310296219]
 position = Vector2(520, 232)
 
+[node name="Img3217" type="Sprite2D" parent="Start" unique_id=1038928201]
+position = Vector2(452, 343)
+scale = Vector2(0.28764477, 0.2876448)
+texture = ExtResource("4_6moem")
+
 [node name="Icon" type="Sprite2D" parent="Start" unique_id=752789799]
-position = Vector2(2.842171e-14, 0)
+position = Vector2(441, 241)
 texture = ExtResource("4_xw16n")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Start" unique_id=1680898829]
@@ -52,7 +58,12 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Options" type="Node2D" parent="." unique_id=221993443]
-position = Vector2(520, 545)
+position = Vector2(1497, 389)
+
+[node name="Img3217" type="Sprite2D" parent="Options" unique_id=1161695908]
+position = Vector2(18, 77)
+scale = Vector2(0.28764477, 0.2876448)
+texture = ExtResource("4_6moem")
 
 [node name="Icon" type="Sprite2D" parent="Options" unique_id=610211293]
 position = Vector2(6.1035156e-05, -7)
@@ -72,7 +83,12 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Exit" type="Node2D" parent="." unique_id=1176691124]
-position = Vector2(520, 864)
+position = Vector2(355, 567)
+
+[node name="Img3217" type="Sprite2D" parent="Exit" unique_id=2116875713]
+position = Vector2(18, 77)
+scale = Vector2(0.28764477, 0.2876448)
+texture = ExtResource("4_6moem")
 
 [node name="Icon" type="Sprite2D" parent="Exit" unique_id=941062331]
 position = Vector2(6.1035156e-05, -7)

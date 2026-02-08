@@ -60,6 +60,8 @@ func load_current_level():
 		return
 		
 	# Defer the call to avoid physics glitches during transition
+	TransitionScreen.transition()
+	await TransitionScreen.on_transition_finished
 	get_tree().change_scene_to_packed.call_deferred(levels[current_level_index])
 	
 	# Start timer if not already running

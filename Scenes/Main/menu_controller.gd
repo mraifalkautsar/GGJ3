@@ -45,17 +45,22 @@ func are_all_buttons_clicked() -> bool:
 			return false
 	return true
 
-func is_point_in_button(point: Vector2, button: Node2D) -> bool:
-	if not button: return false
-	var icon = button.get_node_or_null("Icon")
-	if not icon: return false
+func is_point_in_button(global_mouse_point: Vector2, button_node: Node2D) -> bool:
+	if not button_node: return false
 	
-	var button_pos = button.global_position
-	var half_width = 352 
-	var half_height = 121
+	# 1. Get the visual sprite (Icon)
+	var icon = button_node.get_node_or_null("Icon")
+	if not icon: 
+		push_warning(button_node.name + " has no 'Icon' sprite!")
+		return false
 	
-	return (point.x >= button_pos.x - half_width and point.x <= button_pos.x + half_width and
-			point.y >= button_pos.y - half_height and point.y <= button_pos.y + half_height)
+	# 2. Convert the Global Mouse Position to the Icon's Local Space
+	# This automatically accounts for the button's Position, Rotation, and Scale!
+	var local_mouse_pos = icon.to_local(global_mouse_point)
+	
+	# 3. Check if that local point is inside the sprite's texture rectangle
+	# get_rect() returns the size of the texture centered or offset correctly
+	return icon.get_rect().has_point(local_mouse_pos)
 
 func tumble_button(button: Node2D, should_trigger_start: bool):
 	var start_pos = button.position
@@ -82,4 +87,7 @@ func reveal_character():
 	tween.tween_property(hidden_character, "position:y", hidden_character.position.y, 0.3)
 
 func start_game():
+	TransitionScreen.transition()
+	await TransitionScreen.on_transition_finished
+	GameManager.start_new_game()
 	get_tree().change_scene_to_file("res://Scenes/Main/level_1.tscn")
