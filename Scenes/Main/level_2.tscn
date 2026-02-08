@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://72swr0q83egv" path="res://Assets/level2/IMG_3233.PNG" id="8_k7gxp"]
 [ext_resource type="Texture2D" uid="uid://bqcyoeibek13q" path="res://Assets/level2/IMG_3236.PNG" id="10_k7gxp"]
 [ext_resource type="Texture2D" uid="uid://b1x8swfq6p4qj" path="res://Assets/level2/IMG_3237.PNG" id="12_k7gxp"]
-[ext_resource type="Script" uid="uid://cdrmpr7yinh2p" path="res://Scenes/Main/exit.gd" id="13_v4rsu"]
 [ext_resource type="AudioStream" uid="uid://dvvfq1ave5v18" path="res://Assets/Sounds/Puzzle.mp3" id="13_v4rsu"]
 [ext_resource type="AudioStream" uid="uid://cwpmptp74ih0k" path="res://Assets/Sounds/Pasar.mp3" id="14_7inj5"]
 
@@ -43,7 +42,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k7gxp"]
-size = Vector2(1140.5, 530)
+size = Vector2(1283, 530)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v4rsu"]
 size = Vector2(338, 513)
@@ -56,6 +55,7 @@ size = Vector2(142.25, 1300.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h8i5c"]
 size = Vector2(176.13568, 252.86179)
+
 [sub_resource type="Curve" id="Curve_sleep"]
 _data = [Vector2(0, 0.3), 0.0, 0.0, 0, 0, Vector2(0.4, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
@@ -128,7 +128,7 @@ fixed_target = NodePath("../../Marker2D")
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldCollisions/Tanah" unique_id=1226811586 groups=["walls"]]
-position = Vector2(568.75, 815)
+position = Vector2(497.5, 815)
 shape = SubResource("RectangleShape2D_k7gxp")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldCollisions/Tanah" unique_id=909375505 groups=["walls"]]
@@ -150,14 +150,12 @@ shape = SubResource("RectangleShape2D_q37cu")
 [node name="Exit" type="Area2D" parent="." unique_id=475050221]
 position = Vector2(1430, 907)
 scale = Vector2(0.9992291, 0.8265385)
-script = ExtResource("13_v4rsu")
 metadata/_custom_type_script = "uid://cdrmpr7yinh2p"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=1609649039]
 position = Vector2(91.07019, 85.29541)
 shape = SubResource("RectangleShape2D_h8i5c")
 
-[connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1533740845]
 stream = ExtResource("13_v4rsu")
 volume_db = -1.0
@@ -312,5 +310,7 @@ scale_amount_min = 1.2
 scale_amount_max = 2.8
 scale_amount_curve = SubResource("Curve_electric")
 color = Color(0.6, 0.8, 1, 0.8)
+
+[connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
 
 [editable path="Player"]
