@@ -1,6 +1,19 @@
 [gd_scene format=3 uid="uid://cgiybiysqyiwc"]
 
 [ext_resource type="Script" uid="uid://fndg5ypxaomt" path="res://Autoloads/game_manager.gd" id="1_cv4cs"]
+[ext_resource type="PackedScene" uid="uid://8r08chl8ges4" path="res://Scenes/Main/level_1.tscn" id="2_d3urt"]
+[ext_resource type="PackedScene" uid="uid://d2noufo7l0dip" path="res://Scenes/Main/level_2.tscn" id="3_dbk3l"]
+[ext_resource type="PackedScene" uid="uid://cddxpioyovqgn" path="res://Scenes/Main/level_3.tscn" id="4_50ens"]
+[ext_resource type="PackedScene" uid="uid://d0p1xrn086x52" path="res://Scenes/Main/level_4.tscn" id="5_bnwcw"]
+[ext_resource type="PackedScene" uid="uid://7opj1m1lax1m" path="res://Scenes/Main/ending_scene.tscn" id="6_dbk3l"]
+[ext_resource type="VideoStream" uid="uid://c5c03bh4hhp50" path="res://Assets/good_end.ogv" id="7_bnwcw"]
+[ext_resource type="VideoStream" uid="uid://d27pw2bqecctk" path="res://Assets/bad_end.ogv" id="8_jqj26"]
 
 [node name="GameManager" type="Node" unique_id=735778801]
 script = ExtResource("1_cv4cs")
+levels = Array[PackedScene]([ExtResource("2_d3urt"), ExtResource("3_dbk3l"), ExtResource("4_50ens"), ExtResource("5_bnwcw")])
+total_game_time = 180.0
+good_ending_threshold = 180.0
+ending_cutscene_scene = ExtResource("6_dbk3l")
+good_ending_video = ExtResource("7_bnwcw")
+normal_ending_video = ExtResource("8_jqj26")

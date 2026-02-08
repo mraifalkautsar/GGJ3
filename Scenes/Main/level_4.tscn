@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://ctlislwh7vma4" path="res://Assets/level4/IMG_3253.PNG" id="11_qklt0"]
 [ext_resource type="Texture2D" uid="uid://b5enr7hd8mi2i" path="res://Assets/garena ondel2/IMG_324300.png" id="12_ou0gd"]
 [ext_resource type="Texture2D" uid="uid://bre2sqb2icgls" path="res://Assets/garena ondel2/IMG_324301.png" id="13_8ly8i"]
+[ext_resource type="Script" uid="uid://dluok4hhd6pww" path="res://Scenes/Main/ondel_ondel.gd" id="13_head0"]
 [ext_resource type="Texture2D" uid="uid://dr8xwbhbl3fri" path="res://Assets/garena ondel2/IMG_324302.png" id="14_txklu"]
 [ext_resource type="Texture2D" uid="uid://c44k2uin0uuvv" path="res://Assets/garena ondel2/IMG_324303.png" id="15_g2gch"]
 [ext_resource type="Texture2D" uid="uid://ci53lcdbv1xt" path="res://Assets/garena ondel2/IMG_324304.png" id="16_fvtp1"]
@@ -38,10 +39,13 @@
 [ext_resource type="Texture2D" uid="uid://dn0qwnif5kb16" path="res://Assets/garena ondel2/IMG_324322.png" id="34_lnm2b"]
 [ext_resource type="Texture2D" uid="uid://cvqqybsfqp6uw" path="res://Assets/garena ondel2/IMG_324323.png" id="35_ept0u"]
 [ext_resource type="Texture2D" uid="uid://d04qjpesxidxe" path="res://Assets/garena ondel2/IMG_324324.png" id="36_b40qb"]
+[ext_resource type="Script" uid="uid://dg0k67gpisqhg" path="res://Scenes/Main/kucing.gd" id="38_48kui"]
 [ext_resource type="Texture2D" uid="uid://cu3iyylt5p314" path="res://Assets/garena pocong/IMG_324100.png" id="38_mmmg0"]
 [ext_resource type="Texture2D" uid="uid://ctfnlgunh2c0p" path="res://Assets/garena pocong/IMG_324101.png" id="39_78mnk"]
 [ext_resource type="Texture2D" uid="uid://cg4l5do3w21ec" path="res://Assets/garena pocong/IMG_324102.png" id="40_a4vtv"]
+[ext_resource type="Script" uid="uid://ddmecvilv2oy7" path="res://Scenes/Main/pocong.gd" id="41_7v72q"]
 [ext_resource type="Texture2D" uid="uid://bi3as7xfwmh4a" path="res://Assets/garena pocong/IMG_324103.png" id="41_48kui"]
+[ext_resource type="Texture2D" uid="uid://dsqyk525vjq7" path="res://Assets/Kucing lompat.PNG" id="41_cgay5"]
 [ext_resource type="Texture2D" uid="uid://cehw15wnb2hjv" path="res://Assets/garena pocong/IMG_324104.png" id="42_head0"]
 [ext_resource type="Texture2D" uid="uid://dirbcagrag3rr" path="res://Assets/garena pocong/IMG_324105.png" id="43_7v72q"]
 [ext_resource type="Texture2D" uid="uid://6virk0tf241u" path="res://Assets/garena pocong/IMG_324106.png" id="44_vqjfl"]
@@ -64,6 +68,8 @@
 [ext_resource type="Texture2D" uid="uid://ciwtgugc41ja8" path="res://Assets/garena pocong/IMG_324123.png" id="61_rcdp1"]
 [ext_resource type="Texture2D" uid="uid://bqf8kdocx3n3w" path="res://Assets/garena pocong/IMG_324124.png" id="62_g8fvj"]
 [ext_resource type="Script" uid="uid://dcrnpyxusyrbt" path="res://Scenes/Main/sampah.gd" id="63_78mnk"]
+[ext_resource type="Script" uid="uid://cdrmpr7yinh2p" path="res://Scenes/Main/exit.gd" id="68_vqjfl"]
+[ext_resource type="PackedScene" uid="uid://be8i1yp14mgto" path="res://Scenes/Main/hud.tscn" id="70_b86ri"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rwr0w"]
 size = Vector2(307, 4836)
@@ -104,7 +110,7 @@ size = Vector2(372, 358)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48kui"]
 size = Vector2(4575, 501)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mmmg0"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_head0"]
 size = Vector2(420.5157, 201.42987)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_78mnk"]
@@ -185,15 +191,15 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("36_b40qb")
 }],
-"loop": false,
+"loop": true,
 "name": &"nampar",
 "speed": 30.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nt8nr"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7v72q"]
 size = Vector2(386, 940.8281)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4vtv"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vqjfl"]
 size = Vector2(332, 564.70703)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nsry4"]
@@ -205,12 +211,20 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("41_cgay5")
+}],
+"loop": true,
+"name": &"lompat",
+"speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ouphw"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgay5"]
 size = Vector2(300, 505)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_an802"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b86ri"]
 size = Vector2(401, 633.75)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3uq58"]
@@ -296,7 +310,7 @@ animations = [{
 "speed": 60.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0w0l4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w3ofs"]
 size = Vector2(1096.375, 287.65625)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_668qh"]
@@ -304,6 +318,9 @@ size = Vector2(1869.5, 94.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_re1r2"]
 size = Vector2(346.75, 94.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i013g"]
+size = Vector2(326, 430)
 
 [node name="Level4" type="Node2D" unique_id=1963387392]
 metadata/_edit_horizontal_guides_ = [-3647.0]
@@ -425,16 +442,18 @@ limit_top = -3646
 limit_right = 3420
 limit_bottom = 1080
 current_mode = 1
+look_ahead_dist = 5.0
 fixed_target = NodePath("..")
 
 [node name="Polisi Tidur" type="Area2D" parent="." unique_id=718287865]
 position = Vector2(2247, -1507)
+collision_layer = 2
 script = ExtResource("11_a4vtv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Polisi Tidur" unique_id=1849964427]
 position = Vector2(-47, 147)
 scale = Vector2(1.0608077, 0.8111202)
-shape = SubResource("RectangleShape2D_mmmg0")
+shape = SubResource("RectangleShape2D_head0")
 
 [node name="PolisiTidur" type="Sprite2D" parent="Polisi Tidur" unique_id=333253554]
 position = Vector2(-37, 169)
@@ -442,6 +461,8 @@ texture = ExtResource("11_668qh")
 
 [node name="Ondel-Ondel" type="Area2D" parent="." unique_id=1563417117]
 position = Vector2(3024.5, -2482.5)
+collision_layer = 2
+script = ExtResource("13_head0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ondel-Ondel" unique_id=1111131569]
 position = Vector2(-2050.5, 799.50006)
@@ -453,32 +474,38 @@ frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ondel-Ondel" unique_id=1396857694]
 position = Vector2(-1733.5, 735.91406)
-shape = SubResource("RectangleShape2D_nt8nr")
+shape = SubResource("RectangleShape2D_7v72q")
 
 [node name="Tamparan" type="Area2D" parent="Ondel-Ondel" unique_id=1863413560]
 position = Vector2(-2100.5, 802.5)
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ondel-Ondel/Tamparan" unique_id=2102053535]
 position = Vector2(340, -73)
-shape = SubResource("RectangleShape2D_a4vtv")
+shape = SubResource("RectangleShape2D_vqjfl")
 
 [node name="Kucing" type="Area2D" parent="." unique_id=949929484]
 position = Vector2(3024.5, -2482.5)
+collision_layer = 2
+script = ExtResource("38_48kui")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Kucing" unique_id=377356212]
 position = Vector2(223.5, 1079.5)
 sprite_frames = SubResource("SpriteFrames_nsry4")
+animation = &"lompat"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Kucing" unique_id=1292003962]
 position = Vector2(216.5, 803)
-shape = SubResource("RectangleShape2D_ouphw")
+shape = SubResource("RectangleShape2D_cgay5")
 
 [node name="Pocong" type="Area2D" parent="." unique_id=69018039]
 position = Vector2(2485, -2877)
+collision_layer = 2
+script = ExtResource("41_7v72q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pocong" unique_id=1152939968]
 position = Vector2(81.5, -143.125)
-shape = SubResource("RectangleShape2D_an802")
+shape = SubResource("RectangleShape2D_b86ri")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pocong" unique_id=1418163099]
 z_index = -1
@@ -490,13 +517,15 @@ frame_progress = 1.0
 
 [node name="Genangan" type="Area2D" parent="." unique_id=758405203]
 position = Vector2(1512.25, -1241.25)
+collision_layer = 2
 script = ExtResource("63_78mnk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Genangan" unique_id=262708004]
 position = Vector2(1385.5625, 1441.4219)
-shape = SubResource("RectangleShape2D_0w0l4")
+shape = SubResource("RectangleShape2D_w3ofs")
 
 [node name="Platforms" type="StaticBody2D" parent="." unique_id=1557283351]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms" unique_id=2062382011]
 position = Vector2(1512.25, -1241.25)
@@ -507,5 +536,22 @@ one_way_collision = true
 position = Vector2(3245.375, -1309.125)
 shape = SubResource("RectangleShape2D_re1r2")
 one_way_collision = true
+
+[node name="Exit" type="Area2D" parent="." unique_id=1658867060]
+position = Vector2(490, -3157)
+script = ExtResource("68_vqjfl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=1127750535]
+position = Vector2(153, 205)
+shape = SubResource("RectangleShape2D_i013g")
+
+[node name="HUD" parent="." unique_id=1834778515 instance=ExtResource("70_b86ri")]
+
+[connection signal="body_entered" from="Ondel-Ondel" to="Ondel-Ondel" method="_on_body_entered"]
+[connection signal="body_entered" from="Ondel-Ondel/Tamparan" to="Ondel-Ondel" method="_on_tamparan_body_entered"]
+[connection signal="body_entered" from="Kucing" to="Kucing" method="_on_body_entered"]
+[connection signal="body_entered" from="Pocong" to="Pocong" method="_on_body_entered"]
+[connection signal="body_entered" from="Genangan" to="Genangan" method="_on_body_entered"]
+[connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
 
 [editable path="Player"]

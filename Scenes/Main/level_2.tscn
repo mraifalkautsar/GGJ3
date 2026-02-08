@@ -12,12 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://72swr0q83egv" path="res://Assets/level2/IMG_3233.PNG" id="8_k7gxp"]
 [ext_resource type="Texture2D" uid="uid://bqcyoeibek13q" path="res://Assets/level2/IMG_3236.PNG" id="10_k7gxp"]
 [ext_resource type="Texture2D" uid="uid://b1x8swfq6p4qj" path="res://Assets/level2/IMG_3237.PNG" id="12_k7gxp"]
-[ext_resource type="AudioStream" path="res://Assets/Sounds/GunDash.mp3" id="13_8c3vt"]
 [ext_resource type="Script" uid="uid://cdrmpr7yinh2p" path="res://Scenes/Main/exit.gd" id="13_v4rsu"]
 [ext_resource type="AudioStream" uid="uid://cwpmptp74ih0k" path="res://Assets/Sounds/Pasar.mp3" id="14_7inj5"]
 [ext_resource type="AudioStream" uid="uid://dvvfq1ave5v18" path="res://Assets/Sounds/Puzzle.mp3" id="14_q37cu"]
 [ext_resource type="Script" uid="uid://6n8dfoeh4djw" path="res://Scenes/Main/polisi_tidur.gd" id="16_h8i5c"]
 [ext_resource type="Script" uid="uid://f4xambydrjxa" path="res://Scenes/Main/kucing_tidur.gd" id="17_qyxxk"]
+[ext_resource type="PackedScene" uid="uid://be8i1yp14mgto" path="res://Scenes/Main/hud.tscn" id="18_8c3vt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v4rsu"]
 animations = [{
@@ -131,9 +131,6 @@ scale = Vector2(0.2, 0.2)
 [node name="CameraSystem" parent="Player" index="1" unique_id=1625613650 node_paths=PackedStringArray("fixed_target")]
 current_mode = 1
 fixed_target = NodePath("../../Marker2D")
-
-[node name="Teleport" parent="Player" index="3" unique_id=1330534973]
-stream = ExtResource("13_8c3vt")
 
 [node name="WorldCollisions" type="Node2D" parent="." unique_id=1588624679]
 
@@ -340,6 +337,8 @@ script = ExtResource("17_qyxxk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KucingTidur" unique_id=464017864]
 position = Vector2(57, 20.5)
 shape = SubResource("RectangleShape2D_8c3vt")
+
+[node name="HUD" parent="." unique_id=1834778515 instance=ExtResource("18_8c3vt")]
 
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
 [connection signal="body_entered" from="PolisiTidur" to="PolisiTidur" method="_on_body_entered"]

@@ -69,6 +69,7 @@
 [ext_resource type="Script" uid="uid://cdrmpr7yinh2p" path="res://Scenes/Main/exit.gd" id="67_ps77a"]
 [ext_resource type="AudioStream" uid="uid://dvvfq1ave5v18" path="res://Assets/Sounds/Puzzle.mp3" id="68_f0ief"]
 [ext_resource type="AudioStream" uid="uid://bvvwplvan2u68" path="res://Assets/Sounds/Api.mp3" id="68_ni18y"]
+[ext_resource type="PackedScene" uid="uid://be8i1yp14mgto" path="res://Scenes/Main/hud.tscn" id="70_66alx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jsrw4"]
 animations = [{
@@ -291,10 +292,11 @@ point_count = 3
 offsets = PackedFloat32Array(0, 0.5, 1)
 colors = PackedColorArray(0.3, 0.3, 0.3, 0.8, 0.5, 0.5, 0.5, 0.5, 0.6, 0.6, 0.6, 0)
 
-[node name="Level3" type="Node2D" unique_id=1573222610 node_paths=PackedStringArray("red_button_node", "yellow_button_node", "red_body_1", "red_body_2", "yellow_body")]
+[node name="Level3" type="Node2D" unique_id=1573222610 node_paths=PackedStringArray("red_button_node", "yellow_button_node", "blue_button_node", "red_body_1", "red_body_2", "yellow_body")]
 script = ExtResource("1_jqw3x")
 red_button_node = NodePath("Buttons/AreaButton")
 yellow_button_node = NodePath("Buttons/AreaButton2")
+blue_button_node = NodePath("Buttons/AreaButton1")
 red_body_1 = NodePath("Pipes/AnimatableBody2D")
 red_body_2 = NodePath("Pipes/AnimatableBody2D2")
 yellow_body = NodePath("Pipes/AnimatableBody2D3")
@@ -647,6 +649,8 @@ scale_amount_min = 14.69
 scale_amount_max = 14.69
 scale_amount_curve = SubResource("Curve_smoke")
 color_ramp = SubResource("Gradient_smoke")
+
+[node name="HUD" parent="." unique_id=1834778515 instance=ExtResource("70_66alx")]
 
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
 

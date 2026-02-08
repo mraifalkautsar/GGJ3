@@ -173,19 +173,31 @@ func die(damage_source_pos: Vector2 = Vector2.ZERO):
 		var ragdoll = ragdoll_scene.instantiate()
 		get_tree().current_scene.add_child(ragdoll)
 		
-		# 1. Get current state (including SCALE)
+		# 1. Setup Ragdoll (Your existing code)
 		var is_facing_left = animated_sprite_2d.flip_h
 		var current_anim = animated_sprite_2d.animation
 		var current_frame = animated_sprite_2d.frame
-		var current_scale = scale # Grab the player's current size
-		
-		# 2. Pass it all to the ragdoll
-		# We added 'current_scale' to the end of this call
+		var current_scale = scale
 		ragdoll.setup(global_position, velocity, is_facing_left, current_anim, current_frame, current_scale)
 		
-		# 3. Knockback
+		# 2. Knockback (Your existing code)
 		if damage_source_pos != Vector2.ZERO:
 			var knock_dir = (global_position - damage_source_pos).normalized()
-			ragdoll.apply_central_impulse(knock_dir * 1000) 
+			ragdoll.apply_central_impulse(knock_dir * 1000)
 
+		# --- 3. CAMERA TRANSFER (CRITICAL STEP) ---
+		# Check if we have the camera node
+		if has_node("CameraSystem"):
+			var cam = $CameraSystem
+			
+			# A. Detach from Player (so it doesn't get deleted)
+			remove_child(cam)
+			
+			# B. Attach to Ragdoll
+			ragdoll.add_child(cam)
+			
+			# C. Tell Camera about the new parent
+			cam.switch_target(ragdoll)
+
+	# 4. Goodbye Player
 	queue_free()

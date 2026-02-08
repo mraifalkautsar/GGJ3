@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://7opj1m1lax1m"]
+
+[ext_resource type="Script" uid="uid://lfb76ms4nv2p" path="res://Scenes/Main/ending_scene.gd" id="1_r7oj3"]
+[ext_resource type="PackedScene" uid="uid://1y2utjigwiyb" path="res://Scenes/Main/main_menu.tscn" id="2_y7fwh"]
+
+[node name="EndingScene" type="CanvasLayer" unique_id=1158519722]
+script = ExtResource("1_r7oj3")
+main_menu_scene = ExtResource("2_y7fwh")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=334890892]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

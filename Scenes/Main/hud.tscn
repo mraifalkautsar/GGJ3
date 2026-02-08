@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://be8i1yp14mgto"]
 
 [ext_resource type="Script" uid="uid://d07f6j4iiwmpk" path="res://Scenes/Main/hud.gd" id="1_sv0y6"]
+[ext_resource type="FontFile" uid="uid://rancwc6y43f4" path="res://Assets/Chewy-Regular.ttf" id="2_3iko8"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1834778515]
 script = ExtResource("1_sv0y6")
@@ -19,4 +20,6 @@ grow_horizontal = 2
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_3iko8")
+theme_override_font_sizes/font_size = 32
 text = "00:00"
