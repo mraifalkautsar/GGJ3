@@ -7,12 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://dpou3xpx604bm" path="res://Assets/Pasar/Tanah with sampah.PNG" id="3_yvj08"]
 [ext_resource type="Texture2D" uid="uid://6opvpgq2sujx" path="res://Assets/Pasar/Front tiang.PNG" id="4_jap35"]
 [ext_resource type="Texture2D" uid="uid://bvodd0ybagpkk" path="res://Assets/Pasar/Aset/IMG_3213.PNG" id="7_2ox8k"]
-[ext_resource type="Script" path="res://Scenes/Main/exit.gd" id="7_e1mly"]
+[ext_resource type="Script" uid="uid://cdrmpr7yinh2p" path="res://Scenes/Main/exit.gd" id="7_e1mly"]
 [ext_resource type="PackedScene" uid="uid://bl4f8tj2ia0d7" path="res://Scenes/Babeh/player.tscn" id="7_jap35"]
 [ext_resource type="AudioStream" uid="uid://dvvfq1ave5v18" path="res://Assets/Sounds/Puzzle.mp3" id="8_e1mly"]
 [ext_resource type="AudioStream" uid="uid://cwpmptp74ih0k" path="res://Assets/Sounds/Pasar.mp3" id="9_s22vf"]
 [ext_resource type="Texture2D" uid="uid://com3edqtawtgf" path="res://Assets/Pasar/Aset/IMG_3202.PNG" id="10_s731f"]
 [ext_resource type="Texture2D" uid="uid://btjf2m75iiy3h" path="res://Assets/Pasar/Aset/IMG_3206.PNG" id="11_6mn4f"]
+[ext_resource type="PackedScene" uid="uid://be8i1yp14mgto" path="res://Scenes/Main/hud.tscn" id="14_50g8o"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e1mly"]
 load_path = "res://.godot/imported/Bg with sampah.PNG-8d7aaddc890116b9666cf8c28942c261.ctex"
