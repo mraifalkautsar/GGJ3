@@ -13,4 +13,4 @@ func _on_tamparan_body_entered(body: Node2D) -> void:
 		_death_by_ondel()
 
 func _death_by_ondel():
-	DeadScreen.show_death("jantungan")
+	DeadScreen.show_death("ondel")

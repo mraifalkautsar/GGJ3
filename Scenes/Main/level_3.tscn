@@ -70,6 +70,7 @@
 [ext_resource type="AudioStream" uid="uid://dvvfq1ave5v18" path="res://Assets/Sounds/Puzzle.mp3" id="68_f0ief"]
 [ext_resource type="AudioStream" uid="uid://bvvwplvan2u68" path="res://Assets/Sounds/Api.mp3" id="68_ni18y"]
 [ext_resource type="PackedScene" uid="uid://be8i1yp14mgto" path="res://Scenes/Main/hud.tscn" id="70_66alx"]
+[ext_resource type="Script" uid="uid://dy7qcwc82w2af" path="res://Scenes/Main/api.gd" id="71_boyuh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jsrw4"]
 animations = [{
@@ -291,6 +292,9 @@ point_count = 3
 [sub_resource type="Gradient" id="Gradient_smoke"]
 offsets = PackedFloat32Array(0, 0.5, 1)
 colors = PackedColorArray(0.3, 0.3, 0.3, 0.8, 0.5, 0.5, 0.5, 0.5, 0.6, 0.6, 0.6, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_okmt4"]
+size = Vector2(169, 362)
 
 [node name="Level3" type="Node2D" unique_id=1573222610 node_paths=PackedStringArray("red_button_node", "yellow_button_node", "blue_button_node", "red_body_1", "red_body_2", "yellow_body")]
 script = ExtResource("1_jqw3x")
@@ -652,6 +656,36 @@ color_ramp = SubResource("Gradient_smoke")
 
 [node name="HUD" parent="." unique_id=1834778515 instance=ExtResource("70_66alx")]
 
+[node name="Api" type="Area2D" parent="." unique_id=1840830063]
+position = Vector2(1712, 573)
+collision_layer = 2
+script = ExtResource("71_boyuh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Api" unique_id=1151822188]
+position = Vector2(74.5, 171)
+shape = SubResource("RectangleShape2D_okmt4")
+
+[node name="Api2" type="Area2D" parent="." unique_id=1880199953]
+position = Vector2(1135, 927)
+collision_layer = 2
+script = ExtResource("71_boyuh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Api2" unique_id=1731482907]
+position = Vector2(74.5, 171)
+shape = SubResource("RectangleShape2D_okmt4")
+
+[node name="Api3" type="Area2D" parent="." unique_id=47857909]
+position = Vector2(1717, 1321)
+collision_layer = 2
+script = ExtResource("71_boyuh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Api3" unique_id=176423581]
+position = Vector2(74.5, 171)
+shape = SubResource("RectangleShape2D_okmt4")
+
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
+[connection signal="body_entered" from="Api" to="Api" method="_on_body_entered"]
+[connection signal="body_entered" from="Api2" to="Api2" method="_on_body_entered"]
+[connection signal="body_entered" from="Api3" to="Api3" method="_on_body_entered"]
 
 [editable path="Player"]

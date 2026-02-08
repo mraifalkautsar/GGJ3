@@ -13,21 +13,14 @@
 script = ExtResource("2_3nkhq")
 id = "api"
 photo = ExtResource("1_um1up")
-caption = "Jangan main deket api-api ya dek ^^"
+caption = "Api kalau ketawa bunyinya apa? Kresek-kresek."
 metadata/_custom_type_script = "uid://dcmaod7qylydo"
 
 [sub_resource type="Resource" id="Resource_7dul6"]
 script = ExtResource("2_3nkhq")
 id = "bau"
 photo = ExtResource("4_c6l72")
-caption = "Minimal mandi sehari sekali ^^"
-metadata/_custom_type_script = "uid://dcmaod7qylydo"
-
-[sub_resource type="Resource" id="Resource_jsqmw"]
-script = ExtResource("2_3nkhq")
-id = "kesetrum"
-photo = ExtResource("5_7dul6")
-caption = "Babeh, Son of Odin, Brother of Thor"
+caption = " Sesuatu yang aku nggak bisa buang tuh, Cinta kepada kamu EAK"
 metadata/_custom_type_script = "uid://dcmaod7qylydo"
 
 [sub_resource type="Resource" id="Resource_fdw0c"]
@@ -37,6 +30,20 @@ photo = ExtResource("5_7dul6")
 caption = "Awas jantungnya kambuh lagi beh"
 metadata/_custom_type_script = "uid://dcmaod7qylydo"
 
+[sub_resource type="Resource" id="Resource_jsqmw"]
+script = ExtResource("2_3nkhq")
+id = "kesetrum"
+photo = ExtResource("5_7dul6")
+caption = "lebah nggak bakal kesetrum knp? karena sama2 \"zzt\""
+metadata/_custom_type_script = "uid://dcmaod7qylydo"
+
+[sub_resource type="Resource" id="Resource_so6dg"]
+script = ExtResource("2_3nkhq")
+id = "kucing"
+photo = ExtResource("7_fdw0c")
+caption = "mau jadi kucing aja"
+metadata/_custom_type_script = "uid://dcmaod7qylydo"
+
 [sub_resource type="Resource" id="Resource_t0yi1"]
 script = ExtResource("2_3nkhq")
 id = "polisi"
@@ -44,11 +51,25 @@ photo = ExtResource("6_jsqmw")
 caption = "Polisi, Polisi apa yang tidak kerja? Polisi tidur "
 metadata/_custom_type_script = "uid://dcmaod7qylydo"
 
-[sub_resource type="Resource" id="Resource_so6dg"]
+[sub_resource type="Resource" id="Resource_q13tu"]
 script = ExtResource("2_3nkhq")
-id = "kucing"
-photo = ExtResource("7_fdw0c")
-caption = "Meow.... Meow... "
+id = "ondel"
+photo = ExtResource("5_7dul6")
+caption = "Yu kita nonton ondel-ondel! Yooooo"
+metadata/_custom_type_script = "uid://dcmaod7qylydo"
+
+[sub_resource type="Resource" id="Resource_f50k1"]
+script = ExtResource("2_3nkhq")
+id = "pocong"
+photo = ExtResource("5_7dul6")
+caption = "pocong, pocong apa yang manis? kamu"
+metadata/_custom_type_script = "uid://dcmaod7qylydo"
+
+[sub_resource type="Resource" id="Resource_2bork"]
+script = ExtResource("2_3nkhq")
+id = "got"
+photo = ExtResource("4_c6l72")
+caption = "tenang ini bukan BekaSEA"
 metadata/_custom_type_script = "uid://dcmaod7qylydo"
 
 [node name="DeadScreen" type="CanvasLayer" unique_id=1289175946]
@@ -57,9 +78,12 @@ script = ExtResource("1_wvgpa")
 death_reasons = Dictionary[String, ExtResource("2_3nkhq")]({
 "api": SubResource("Resource_c6l72"),
 "bau": SubResource("Resource_7dul6"),
+"got": SubResource("Resource_2bork"),
 "jantungan": SubResource("Resource_fdw0c"),
 "kesetrum": SubResource("Resource_jsqmw"),
 "kucing": SubResource("Resource_so6dg"),
+"ondel": SubResource("Resource_q13tu"),
+"pocong": SubResource("Resource_f50k1"),
 "polisi": SubResource("Resource_t0yi1")
 })
 
@@ -72,20 +96,15 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Content" type="VBoxContainer" parent="." unique_id=1153345463]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -500.0
-offset_top = -535.5
-offset_right = 500.0
-offset_bottom = 535.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Photo" type="TextureRect" parent="Content" unique_id=85978813]
 layout_mode = 2
+size_flags_horizontal = 4
 texture = ExtResource("1_um1up")
 
 [node name="Caption" type="RichTextLabel" parent="Content" unique_id=1175849382]
