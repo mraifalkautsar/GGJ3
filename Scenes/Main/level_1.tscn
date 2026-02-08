@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cdrmpr7yinh2p" path="res://Scenes/Main/exit.gd" id="7_e1mly"]
 [ext_resource type="PackedScene" uid="uid://bl4f8tj2ia0d7" path="res://Scenes/Babeh/player.tscn" id="7_jap35"]
 [ext_resource type="AudioStream" uid="uid://dvvfq1ave5v18" path="res://Assets/Sounds/Puzzle.mp3" id="8_e1mly"]
+[ext_resource type="Script" uid="uid://dcrnpyxusyrbt" path="res://Scenes/Main/sampah.gd" id="8_ikmak"]
 [ext_resource type="AudioStream" uid="uid://cwpmptp74ih0k" path="res://Assets/Sounds/Pasar.mp3" id="9_s22vf"]
 [ext_resource type="Texture2D" uid="uid://com3edqtawtgf" path="res://Assets/Pasar/Aset/IMG_3202.PNG" id="10_s731f"]
 [ext_resource type="Texture2D" uid="uid://btjf2m75iiy3h" path="res://Assets/Pasar/Aset/IMG_3206.PNG" id="11_6mn4f"]
@@ -34,7 +35,7 @@ size = Vector2(146.5, 1079.75)
 size = Vector2(110.5, 1071)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s22vf"]
-size = Vector2(540, 282.5)
+size = Vector2(501, 282.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7exki"]
 size = Vector2(498, 282.5)
@@ -231,9 +232,10 @@ shape = SubResource("RectangleShape2D_e1mly")
 
 [node name="Sampah" type="Area2D" parent="." unique_id=1974542647]
 position = Vector2(910, 779)
+script = ExtResource("8_ikmak")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sampah" unique_id=172123352]
-position = Vector2(246, 163.75)
+position = Vector2(245.5, 163.75)
 shape = SubResource("RectangleShape2D_s22vf")
 
 [node name="Exit" type="Area2D" parent="." unique_id=8793994]
@@ -349,6 +351,7 @@ color = Color(0.45, 0.85, 0.25, 0.55)
 
 [node name="HUD" parent="." unique_id=1834778515 instance=ExtResource("14_50g8o")]
 
+[connection signal="body_entered" from="Sampah" to="Sampah" method="_on_body_entered"]
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
 
 [editable path="Player"]

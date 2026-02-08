@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 
 TransitionScreen="*uid://dccu70mbvmehi"
 GameManager="*uid://fndg5ypxaomt"
+DeadScreen="*uid://cwcrpgxo88bbf"
 
 [display]
 

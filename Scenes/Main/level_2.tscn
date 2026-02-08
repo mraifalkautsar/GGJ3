@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://cdrmpr7yinh2p" path="res://Scenes/Main/exit.gd" id="13_v4rsu"]
 [ext_resource type="AudioStream" uid="uid://cwpmptp74ih0k" path="res://Assets/Sounds/Pasar.mp3" id="14_7inj5"]
 [ext_resource type="AudioStream" uid="uid://dvvfq1ave5v18" path="res://Assets/Sounds/Puzzle.mp3" id="14_q37cu"]
+[ext_resource type="Script" uid="uid://6n8dfoeh4djw" path="res://Scenes/Main/polisi_tidur.gd" id="16_h8i5c"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v4rsu"]
 animations = [{
@@ -64,6 +65,12 @@ point_count = 3
 [sub_resource type="Curve" id="Curve_electric"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0.8), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qyxxk"]
+size = Vector2(320, 131)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8c3vt"]
+size = Vector2(134, 61)
 
 [node name="Level2" type="Node2D" unique_id=4385575]
 
@@ -313,6 +320,22 @@ scale_amount_max = 2.8
 scale_amount_curve = SubResource("Curve_electric")
 color = Color(0.6, 0.8, 1, 0.8)
 
+[node name="PolisiTidur" type="Area2D" parent="." unique_id=829057979]
+position = Vector2(806, 406)
+script = ExtResource("16_h8i5c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PolisiTidur" unique_id=1495303975]
+position = Vector2(150, 76.5)
+shape = SubResource("RectangleShape2D_qyxxk")
+
+[node name="KucingTidur" type="Area2D" parent="." unique_id=1843147368]
+position = Vector2(1158, 763)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KucingTidur" unique_id=464017864]
+position = Vector2(57, 20.5)
+shape = SubResource("RectangleShape2D_8c3vt")
+
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
+[connection signal="body_entered" from="PolisiTidur" to="PolisiTidur" method="_on_body_entered"]
 
 [editable path="Player"]

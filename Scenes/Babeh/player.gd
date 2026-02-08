@@ -14,6 +14,8 @@ extends CharacterBody2D
 @export var max_pull_power: float = 1200.0 
 @export var max_lift_power: float = 600.0 
 
+@export var ragdoll_scene: PackedScene
+
 func _ready():
 	add_to_group("Player")
 	rod_mechanic.launch_requested.connect(_on_rod_launch)
@@ -124,3 +126,25 @@ func apply_repel_force(target_point: Vector2, charge_ratio: float):
 func limit_speed():
 	if velocity.length() > 1500:
 		velocity = velocity.normalized() * 1500
+
+func die(damage_source_pos: Vector2 = Vector2.ZERO):
+	if ragdoll_scene:
+		var ragdoll = ragdoll_scene.instantiate()
+		get_tree().current_scene.add_child(ragdoll)
+		
+		# 1. Get current state (including SCALE)
+		var is_facing_left = animated_sprite_2d.flip_h
+		var current_anim = animated_sprite_2d.animation
+		var current_frame = animated_sprite_2d.frame
+		var current_scale = scale # Grab the player's current size
+		
+		# 2. Pass it all to the ragdoll
+		# We added 'current_scale' to the end of this call
+		ragdoll.setup(global_position, velocity, is_facing_left, current_anim, current_frame, current_scale)
+		
+		# 3. Knockback
+		if damage_source_pos != Vector2.ZERO:
+			var knock_dir = (global_position - damage_source_pos).normalized()
+			ragdoll.apply_central_impulse(knock_dir * 1000) 
+
+	queue_free()
