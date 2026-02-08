@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://b1x8swfq6p4qj" path="res://Assets/level2/IMG_3237.PNG" id="12_k7gxp"]
 [ext_resource type="Script" uid="uid://cdrmpr7yinh2p" path="res://Scenes/Main/exit.gd" id="13_v4rsu"]
 [ext_resource type="AudioStream" uid="uid://dvvfq1ave5v18" path="res://Assets/Sounds/Puzzle.mp3" id="13_v4rsu"]
+[ext_resource type="AudioStream" uid="uid://cwpmptp74ih0k" path="res://Assets/Sounds/Pasar.mp3" id="14_7inj5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v4rsu"]
 animations = [{
@@ -159,6 +160,12 @@ shape = SubResource("RectangleShape2D_h8i5c")
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1533740845]
 stream = ExtResource("13_v4rsu")
+volume_db = -1.0
+autoplay = true
+
+[node name="PasarSound" type="AudioStreamPlayer" parent="." unique_id=1182559464]
+stream = ExtResource("14_7inj5")
+volume_db = -1.0
 autoplay = true
 
 [node name="SleepParticles1" type="CPUParticles2D" parent="." unique_id=1234567894]

@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://8kk60rsyd7de" path="res://Scenes/Babeh_Puzzle/hook.tscn" id="3_r6fjk"]
 [ext_resource type="Texture2D" uid="uid://c1527pqwyu8pq" path="res://Assets/mancing-spritesheet.png" id="3_uemx0"]
 [ext_resource type="PackedScene" uid="uid://cvjcujrvtrqmj" path="res://Scenes/Camera/camera_system.tscn" id="4_pobte"]
-[ext_resource type="AudioStream" uid="uid://cm6ggfwjju7tj" path="res://Assets/Sounds/GunDash.mp3" id="7_uemx0"]
+[ext_resource type="AudioStream" uid="uid://q71ixjn0sfxg" path="res://Assets/Sounds/GunDash.wav" id="8_1ttxi"]
 [ext_resource type="AudioStream" uid="uid://ckwyop00x7ot7" path="res://Assets/Sounds/Death.wav" id="9_1ttxi"]
 [ext_resource type="AudioStream" uid="uid://b2tdrl76o0dy4" path="res://Assets/Sounds/FishingReel.wav" id="9_1uctg"]
 
@@ -419,7 +419,7 @@ position = Vector2(1, 91)
 shape = SubResource("CapsuleShape2D_ict8v")
 
 [node name="Teleport" type="AudioStreamPlayer2D" parent="." unique_id=1330534973]
-stream = ExtResource("7_uemx0")
+stream = ExtResource("8_1ttxi")
 
 [node name="Running" type="AudioStreamPlayer2D" parent="." unique_id=553651626]
 stream = SubResource("AudioStreamWAV_1uctg")

@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://com3edqtawtgf" path="res://Assets/Pasar/Aset/IMG_3202.PNG" id="10_s731f"]
 [ext_resource type="Texture2D" uid="uid://btjf2m75iiy3h" path="res://Assets/Pasar/Aset/IMG_3206.PNG" id="11_6mn4f"]
 [ext_resource type="AudioStream" uid="uid://dvvfq1ave5v18" path="res://Assets/Sounds/Puzzle.mp3" id="8_e1mly"]
+[ext_resource type="AudioStream" uid="uid://cwpmptp74ih0k" path="res://Assets/Sounds/Pasar.mp3" id="9_s22vf"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e1mly"]
 load_path = "res://.godot/imported/Bg with sampah.PNG-8d7aaddc890116b9666cf8c28942c261.ctex"
@@ -278,6 +279,11 @@ texture = ExtResource("11_6mn4f")
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
 [node name="BGM" type="AudioStreamPlayer" parent="." unique_id=377780248]
 stream = ExtResource("8_e1mly")
+autoplay = true
+
+[node name="PasarSound" type="AudioStreamPlayer" parent="." unique_id=1023740670]
+stream = ExtResource("9_s22vf")
+volume_db = -3.0
 autoplay = true
 
 [node name="SmellParticles1" type="CPUParticles2D" parent="." unique_id=1234567891]

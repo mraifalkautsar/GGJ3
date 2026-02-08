@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Puzzle.mp3-823a80a33937cc1d73e1e61e437c472d.m
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

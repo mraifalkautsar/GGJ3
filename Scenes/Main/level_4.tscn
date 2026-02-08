@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://d0p1xrn086x52"]
+
+[ext_resource type="Texture2D" uid="uid://d3bpr1kbywtly" path="res://Assets/Pasar/Bg without truck.PNG" id="1_i58qw"]
+[ext_resource type="Texture2D" uid="uid://1c8hmhxp064r" path="res://Assets/Pasar/Tanah.PNG" id="2_dbems"]
+[ext_resource type="Texture2D" uid="uid://dpou3xpx604bm" path="res://Assets/Pasar/Tanah with sampah.PNG" id="3_f7nwq"]
+[ext_resource type="Texture2D" uid="uid://6opvpgq2sujx" path="res://Assets/Pasar/Front tiang.PNG" id="4_6d2rn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrdnt"]
+size = Vector2(567, 1121.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrinw"]
+size = Vector2(498, 282.5)
+
+[node name="Level2" type="Node2D" unique_id=1963387392]
+
+[node name="Tanah" type="StaticBody2D" parent="." unique_id=2092404085]
+position = Vector2(347, 739)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tanah" unique_id=271581617]
+position = Vector2(274, 179)
+shape = SubResource("RectangleShape2D_xrdnt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Tanah" unique_id=1960415494]
+position = Vector2(1166, 293)
+scale = Vector2(0.36, 0.52519804)
+shape = SubResource("RectangleShape2D_xrdnt")
+
+[node name="Tiang" type="StaticBody2D" parent="." unique_id=2106708865]
+position = Vector2(-202, -17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiang" unique_id=1765339370]
+position = Vector2(274, 571.125)
+shape = SubResource("RectangleShape2D_xrdnt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Tiang" unique_id=451596663]
+position = Vector2(2121, 578)
+shape = SubResource("RectangleShape2D_xrdnt")
+
+[node name="Sampah" type="Area2D" parent="." unique_id=1974542647]
+position = Vector2(910, 779)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sampah" unique_id=172123352]
+position = Vector2(249, 163.75)
+shape = SubResource("RectangleShape2D_wrinw")
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=8793994]
+position = Vector2(1440, 390.00003)
+scale = Vector2(0.3227664, 1.050551)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=1042795467]
+position = Vector2(249, 163.75)
+shape = SubResource("RectangleShape2D_wrinw")
+
+[node name="World" type="CanvasLayer" parent="." unique_id=1340250255]
+
+[node name="TextureRect" type="TextureRect" parent="World" unique_id=504837708]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_i58qw")
+
+[node name="TextureRect3" type="TextureRect" parent="World" unique_id=1165142767]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_dbems")
+
+[node name="TextureRect4" type="TextureRect" parent="World" unique_id=164901102]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("3_f7nwq")
+
+[node name="TextureRect2" type="TextureRect" parent="World" unique_id=137396505]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("4_6d2rn")

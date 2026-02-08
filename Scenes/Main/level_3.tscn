@@ -68,6 +68,7 @@
 [ext_resource type="PackedScene" uid="uid://c6spye233g43g" path="res://Scenes/Babeh_Puzzle/player.tscn" id="61_87s1p"]
 [ext_resource type="Script" uid="uid://cdrmpr7yinh2p" path="res://Scenes/Main/exit.gd" id="67_ps77a"]
 [ext_resource type="AudioStream" uid="uid://dvvfq1ave5v18" path="res://Assets/Sounds/Puzzle.mp3" id="67_ps77a"]
+[ext_resource type="AudioStream" uid="uid://bvvwplvan2u68" path="res://Assets/Sounds/Api.mp3" id="68_ni18y"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jsrw4"]
 animations = [{
@@ -476,6 +477,11 @@ shape = SubResource("RectangleShape2D_boyuh")
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered"]
 [node name="BGM" type="AudioStreamPlayer2D" parent="." unique_id=1670064777]
 stream = ExtResource("67_ps77a")
+autoplay = true
+
+[node name="Fire" type="AudioStreamPlayer" parent="." unique_id=2009136049]
+stream = ExtResource("68_ni18y")
+volume_db = -1.5
 autoplay = true
 
 [node name="FireParticles1" type="CPUParticles2D" parent="." unique_id=1234567900]
