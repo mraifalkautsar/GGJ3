@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bqcyoeibek13q" path="res://Assets/level2/IMG_3236.PNG" id="10_k7gxp"]
 [ext_resource type="Texture2D" uid="uid://b1x8swfq6p4qj" path="res://Assets/level2/IMG_3237.PNG" id="12_k7gxp"]
 [ext_resource type="Script" uid="uid://cdrmpr7yinh2p" path="res://Scenes/Main/exit.gd" id="13_v4rsu"]
+[ext_resource type="AudioStream" uid="uid://dvvfq1ave5v18" path="res://Assets/Sounds/Puzzle.mp3" id="13_v4rsu"]
 [ext_resource type="AudioStream" uid="uid://cwpmptp74ih0k" path="res://Assets/Sounds/Pasar.mp3" id="14_7inj5"]
 [ext_resource type="AudioStream" uid="uid://dvvfq1ave5v18" path="res://Assets/Sounds/Puzzle.mp3" id="14_q37cu"]
 
@@ -43,7 +44,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k7gxp"]
-size = Vector2(1140.5, 530)
+size = Vector2(1283, 530)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v4rsu"]
 size = Vector2(338, 513)
@@ -129,7 +130,7 @@ fixed_target = NodePath("../../Marker2D")
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldCollisions/Tanah" unique_id=1226811586 groups=["walls"]]
-position = Vector2(568.75, 815)
+position = Vector2(497.5, 815)
 shape = SubResource("RectangleShape2D_k7gxp")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldCollisions/Tanah" unique_id=909375505 groups=["walls"]]
@@ -151,7 +152,6 @@ shape = SubResource("RectangleShape2D_q37cu")
 [node name="Exit" type="Area2D" parent="." unique_id=475050221]
 position = Vector2(1430, 907)
 scale = Vector2(0.9992291, 0.8265385)
-script = ExtResource("13_v4rsu")
 metadata/_custom_type_script = "uid://cdrmpr7yinh2p"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=1609649039]
